@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mask That Frees — Cultures, Emotion &amp; Performing Arts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff8ee;
+  --box:#ffedc9;
+  --box-edge:#f6d9a0;
+  --ink:#5c4632;
+  --ink-soft:#8a7357;
+  --red:#e8564f;
+  --green:#5aa348;
+  --avo:#4e7a3a;
+  --gold:#f2b544;
+  --peach:#ffd9b3;
+  --white:#fffdf8;
+  --display:'Baloo 2', system-ui, sans-serif;
+  --body:'Nunito', system-ui, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:var(--body);
+  background:var(--bg);
+  color:var(--ink);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+button{font-family:inherit;cursor:pointer}
+a{color:var(--red)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:8px}
+
+/* soft dotted background like the wireframe canvas */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;
+  background-image:radial-gradient(#eadbc2 1.5px, transparent 1.5px);
+  background-size:34px 34px;
+  opacity:.5;
+}
+
+/* ---------- top nav ---------- */
+.topbar{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 28px;flex-wrap:wrap;gap:12px;
+}
+.logo{
+  font-family:var(--display);font-weight:800;font-size:1.15rem;
+  display:flex;align-items:center;gap:10px;color:var(--ink);
+  background:none;border:none;
+}
+.logo .dot{width:26px;height:26px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #7cc262, #4e7a3a);
+  box-shadow:inset -3px -4px 0 rgba(0,0,0,.12);}
+.topbar nav{display:flex;gap:10px;flex-wrap:wrap}
+.navbtn{
+  font-family:var(--display);font-weight:700;font-size:.9rem;
+  background:var(--white);color:var(--ink);
+  border:2.5px solid var(--ink);
+  border-radius:999px;padding:8px 18px;
+  box-shadow:0 3px 0 var(--ink);
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.navbtn:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--ink)}
+.navbtn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink)}
+.navbtn.active{background:var(--gold)}
+
+/* ---------- pages ---------- */
+.page{display:none;animation:pop .35s ease}
+.page.show{display:block}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.page{animation:none}}
+
+/* ---------- HOME ---------- */
+.home-card{
+  max-width:1020px;margin:26px auto 60px;padding:0 20px;
+}
+.home-inner{
+  position:relative;
+  background:var(--white);
+  border:3px solid var(--ink);
+  border-radius:26px;
+  box-shadow:0 8px 0 rgba(92,70,50,.2);
+  padding:clamp(36px,6vw,80px) clamp(28px,5vw,64px);
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:40px;
+  align-items:center;
+  min-height:480px;
+}
+@media(max-width:760px){.home-inner{grid-template-columns:1fr}}
+.home-left h1{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(2.4rem,6.5vw,4.4rem);
+  line-height:1.05;letter-spacing:-.01em;
+}
+.home-left h1 span{color:var(--red)}
+.home-left .desc{
+  margin-top:18px;max-width:46ch;
+  font-size:1.05rem;line-height:1.75;color:var(--ink-soft);
+}
+.home-fruits{margin-top:26px;display:flex;gap:6px}
+.home-fruits svg{width:54px;height:54px;
+  animation:bob 3.2s ease-in-out infinite}
+.home-fruits svg:nth-child(2){animation-delay:.5s}
+.home-fruits svg:nth-child(3){animation-delay:1s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media (prefers-reduced-motion: reduce){.home-fruits svg{animation:none}}
+.home-right{
+  display:flex;flex-direction:column;gap:22px;align-items:stretch;min-width:220px;
+}
+.bigbtn{
+  font-family:var(--display);font-weight:700;font-size:1.05rem;
+  background:var(--white);color:var(--ink);
+  border:3px solid var(--ink);border-radius:16px;
+  padding:14px 26px;text-align:center;
+  box-shadow:0 4px 0 var(--ink);
+  transition:transform .12s ease, box-shadow .12s ease, background .12s;
+}
+.bigbtn:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--ink);background:var(--peach)}
+.bigbtn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink)}
+.bigbtn.primary{background:var(--gold)}
+/* click here! sits beside the interactive button, arrow pointing at it */
+.cta-row{display:flex;align-items:center;gap:10px}
+.cta-row .bigbtn{flex:1}
+.click-here{
+  display:flex;align-items:center;gap:6px;flex:none;
+  font-family:var(--display);font-weight:700;color:var(--red);font-size:.95rem;
+  white-space:nowrap;
+}
+.click-here svg{width:52px;height:30px;flex:none;animation:nudge 1.4s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(7px)}}
+@media (prefers-reduced-motion: reduce){.click-here svg{animation:none}}
+@media (max-width:420px){.click-here svg{width:38px}}
+
+/* ---------- INTERACTIVE (suika box) ---------- */
+.play-wrap{max-width:1020px;margin:10px auto 60px;padding:0 20px}
+.play-head{text-align:center;margin-bottom:18px}
+.play-head h2{font-family:var(--display);font-weight:800;font-size:clamp(1.6rem,4vw,2.4rem)}
+.play-head p{color:var(--ink-soft);margin-top:6px}
+/* add-your-fruit form */
+.add-fruit{
+  max-width:720px;margin:0 auto 16px;
+  background:var(--white);border:3px solid var(--ink);border-radius:18px;
+  box-shadow:0 5px 0 rgba(92,70,50,.2);
+  padding:16px 18px;
+}
+.add-fruit label{font-family:var(--display);font-weight:700;font-size:.95rem;display:block;margin-bottom:10px}
+.add-row{display:flex;gap:10px;flex-wrap:wrap}
+.add-row input{
+  font-family:var(--body);font-size:.92rem;color:var(--ink);
+  border:2.5px solid var(--ink);border-radius:12px;padding:9px 13px;background:var(--bg);
+}
+.add-row input.food{flex:1;min-width:130px}
+.add-row input.opinion{flex:2.2;min-width:180px}
+.add-row button{
+  font-family:var(--display);font-weight:700;font-size:.92rem;
+  background:var(--red);color:#fff;border:2.5px solid var(--ink);border-radius:12px;
+  padding:9px 18px;box-shadow:0 3px 0 var(--ink);
+}
+.add-row button:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink)}
+.add-note{font-size:.72rem;color:var(--ink-soft);margin-top:8px}
+.del-fruit{
+  margin-top:10px;font-family:var(--display);font-weight:700;font-size:.88rem;
+  background:var(--white);color:var(--red);
+  border:2.5px solid var(--ink);border-radius:12px;padding:8px 16px;
+  box-shadow:0 3px 0 var(--ink);
+}
+.del-fruit:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink)}
+.suika-box{
+  position:relative;
+  height:min(66vh,560px);
+  background:linear-gradient(var(--box), #ffe3b0);
+  border:4px solid var(--ink);
+  border-radius:22px;
+  box-shadow:inset 0 -14px 0 rgba(92,70,50,.12), 0 8px 0 rgba(92,70,50,.2);
+  overflow:hidden;
+  touch-action:manipulation;
+}
+/* box side walls hint like suika */
+.suika-box::before,.suika-box::after{
+  content:"";position:absolute;top:0;bottom:0;width:14px;
+  background:rgba(255,255,255,.35);
+}
+.suika-box::before{left:0}.suika-box::after{right:0}
+.fruit{
+  position:absolute;top:0;left:0;
+  border:none;background:none;padding:0;
+  will-change:transform;
+  filter:drop-shadow(0 4px 3px rgba(92,70,50,.18));
+  transition:filter .15s;
+}
+.fruit svg{display:block;width:100%;height:100%}
+.fruit:hover{filter:drop-shadow(0 6px 6px rgba(92,70,50,.3)) brightness(1.04)}
+.fruit .tag{
+  position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);
+  font-family:var(--display);font-weight:700;font-size:.72rem;
+  background:var(--white);border:2px solid var(--ink);border-radius:999px;
+  padding:2px 10px;white-space:nowrap;color:var(--ink);
+  pointer-events:none;
+}
+
+/* ---------- experience modal ---------- */
+.overlay{
+  position:fixed;inset:0;background:rgba(92,70,50,.4);
+  display:none;align-items:center;justify-content:center;
+  padding:20px;z-index:50;
+}
+.overlay.show{display:flex}
+.exp-card{
+  position:relative;
+  width:min(680px,100%);max-height:88vh;overflow-y:auto;
+  background:var(--white);
+  border:3.5px solid var(--ink);border-radius:24px;
+  box-shadow:0 10px 0 rgba(92,70,50,.25);
+  padding:34px 34px 28px;
+  animation:pop .3s ease;
+}
+.exp-close{
+  position:absolute;top:14px;right:14px;
+  width:38px;height:38px;border-radius:50%;
+  border:2.5px solid var(--ink);background:var(--white);
+  font-family:var(--display);font-weight:800;font-size:1.1rem;color:var(--ink);
+  box-shadow:0 3px 0 var(--ink);
+}
+.exp-close:hover{background:var(--peach)}
+.exp-head{display:flex;align-items:center;gap:18px;margin-bottom:6px;flex-wrap:wrap}
+.exp-head svg{width:84px;height:84px;flex:none}
+.exp-head .eyebrow{
+  font-family:var(--display);font-weight:700;font-size:.8rem;
+  text-transform:uppercase;letter-spacing:.14em;color:var(--red);
+}
+.exp-head h3{font-family:var(--display);font-weight:800;font-size:1.9rem;line-height:1.1}
+.exp-badge{
+  display:inline-block;margin-top:4px;
+  font-size:.82rem;font-weight:700;color:var(--ink-soft);
+  background:var(--box);border-radius:999px;padding:3px 12px;
+  border:2px solid var(--box-edge);
+}
+.exp-card p{margin:14px 0;line-height:1.75;font-size:.98rem}
+.exp-quote{
+  margin:18px 0;padding:16px 20px;
+  background:var(--box);border-radius:14px;border:2px dashed var(--box-edge);
+  font-style:italic;font-size:1.05rem;line-height:1.6;
+}
+.exp-quote small{display:block;margin-top:6px;font-style:normal;font-weight:700;color:var(--ink-soft);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em}
+.exp-fact{font-size:.88rem;color:var(--ink-soft);border-top:2px solid var(--box);padding-top:12px}
+
+/* prompt box */
+.prompt-zone{margin-top:20px;background:var(--bg);border:2.5px solid var(--ink);border-radius:16px;padding:18px 20px}
+.prompt-zone label{font-family:var(--display);font-weight:700;font-size:.95rem;display:block;margin-bottom:10px}
+.prompt-row{display:flex;gap:10px;flex-wrap:wrap}
+.prompt-row input{
+  flex:1;min-width:200px;
+  font-family:var(--body);font-size:.95rem;color:var(--ink);
+  border:2.5px solid var(--ink);border-radius:12px;padding:10px 14px;background:var(--white);
+}
+.prompt-row button{
+  font-family:var(--display);font-weight:700;
+  background:var(--gold);border:2.5px solid var(--ink);border-radius:12px;
+  padding:10px 20px;box-shadow:0 3px 0 var(--ink);color:var(--ink);
+}
+.prompt-row button:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink)}
+.responses{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.responses div{
+  background:var(--white);border:2px solid var(--box-edge);border-radius:10px;
+  padding:8px 12px;font-size:.9rem;
+}
+.prompt-note{font-size:.75rem;color:var(--ink-soft);margin-top:8px}
+
+/* ---------- resource & about pages ---------- */
+.simple-page{max-width:820px;margin:20px auto 70px;padding:0 20px}
+.panel{
+  background:var(--white);border:3px solid var(--ink);border-radius:22px;
+  box-shadow:0 8px 0 rgba(92,70,50,.2);
+  padding:clamp(28px,4.5vw,48px);
+}
+.panel h2{font-family:var(--display);font-weight:800;font-size:1.9rem;margin-bottom:16px}
+.panel h3{font-family:var(--display);font-weight:700;font-size:1.15rem;margin:22px 0 8px;color:var(--red)}
+.panel p,.panel li{line-height:1.75;font-size:.98rem}
+.panel ul{list-style:none}
+.panel ul li{
+  padding:10px 0 10px 30px;position:relative;border-bottom:2px dashed var(--box);
+}
+.panel ul li::before{content:"🍓";position:absolute;left:0;font-size:.9rem}
+.panel ul li:nth-child(2n)::before{content:"🍊"}
+.panel ul li:nth-child(3n)::before{content:"🍇"}
+.panel ul li:last-child{border-bottom:none}
+
+footer{
+  text-align:center;color:var(--ink-soft);
+  font-family:var(--display);font-weight:600;font-size:.85rem;
+  padding:0 20px 40px;
+}
+
+/* ---------- OUR FINDINGS ---------- */
+.findings-wrap{max-width:900px;margin:20px auto 70px;padding:0 20px;display:flex;flex-direction:column;gap:26px}
+.find-head{text-align:center;margin-bottom:4px}
+.find-head h2{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,4.5vw,2.6rem)}
+.find-head p{color:var(--ink-soft);margin-top:6px}
+.find-sec{
+  background:var(--white);border:3px solid var(--ink);border-radius:22px;
+  box-shadow:0 8px 0 rgba(92,70,50,.2);
+  padding:clamp(26px,4.5vw,44px);
+}
+.find-sec .secnum{
+  display:inline-block;font-family:var(--display);font-weight:800;font-size:.8rem;
+  background:var(--gold);border:2.5px solid var(--ink);border-radius:999px;
+  padding:3px 14px;margin-bottom:12px;
+}
+.find-sec h3{font-family:var(--display);font-weight:800;font-size:1.5rem;line-height:1.2;margin-bottom:14px}
+.find-sec p{line-height:1.8;font-size:.98rem;margin-bottom:14px}
+.find-sec p:last-child{margin-bottom:0}
+.quote{
+  margin:18px 0;padding:16px 20px;
+  background:var(--box);border-radius:14px;border:2px dashed var(--box-edge);
+  font-style:italic;font-size:1.05rem;line-height:1.65;
+}
+.quote small{display:block;margin-top:6px;font-style:normal;font-weight:700;color:var(--ink-soft);font-size:.76rem;text-transform:uppercase;letter-spacing:.1em}
+/* three culture mini-cards inside findings */
+.mini-cultures{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+@media(max-width:700px){.mini-cultures{grid-template-columns:1fr}}
+.mini-culture{
+  background:var(--bg);border:2.5px solid var(--ink);border-radius:16px;padding:16px 16px 14px;
+  text-align:center;
+}
+.mini-culture svg{width:56px;height:56px;margin-bottom:6px}
+.mini-culture h5{font-family:var(--display);font-weight:800;font-size:1rem}
+.mini-culture .tagword{font-family:var(--display);font-weight:700;color:var(--red);font-size:.85rem}
+.mini-culture p{font-size:.82rem;color:var(--ink-soft);line-height:1.55;margin:8px 0 0}
+/* methods mini grid */
+.methods{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:6px}
+@media(max-width:640px){.methods{grid-template-columns:1fr}}
+.methods div{background:var(--bg);border:2.5px solid var(--ink);border-radius:14px;padding:14px 16px}
+.methods h5{font-family:var(--display);font-weight:800;font-size:.92rem;margin-bottom:4px}
+.methods p{font-size:.84rem;color:var(--ink-soft);line-height:1.6;margin:0}
+/* ---------- professional charts (academic style) ---------- */
+.chart-panel{
+  margin:20px 0;background:#fff;border:1px solid #d9d2c4;border-radius:8px;
+  padding:22px 24px 16px;
+}
+.chart-panel .ctitle{font-family:var(--body);font-weight:700;font-size:.92rem;color:#333;margin-bottom:2px}
+.chart-panel .csub{font-size:.76rem;color:#777;margin-bottom:16px}
+.chart-caption{font-size:.78rem;color:#666;line-height:1.55;margin-top:14px;padding-top:10px;border-top:1px solid #e8e2d5}
+.chart-caption b{color:#333}
+/* horizontal bars */
+.hchart{display:flex;flex-direction:column;gap:8px}
+.hbar{display:grid;grid-template-columns:minmax(130px,200px) 1fr 30px;gap:10px;align-items:center}
+.hbar .hlabel{font-size:.74rem;font-weight:400;line-height:1.25;text-align:right;color:#444}
+.hbar .htrack{height:15px;background:#f2efe8;border-radius:2px;overflow:hidden}
+.hbar .hfill{height:100%;border-radius:0;background:#4b5fa8}
+.hbar .hval{font-size:.74rem;color:#555;font-weight:600}
+@media(max-width:520px){
+  .hbar{grid-template-columns:1fr;gap:2px}
+  .hbar .hlabel{text-align:left}
+  .hbar .hval{display:none}
+}
+/* grouped column chart (Figure 1) */
+.colchart{display:flex;justify-content:space-around;align-items:flex-end;gap:24px;height:210px;
+  border-bottom:1.5px solid #999;padding:0 8px;margin-top:8px}
+.col-group{display:flex;flex-direction:column;align-items:center;height:100%;justify-content:flex-end;flex:1;max-width:230px}
+.cols{display:flex;align-items:flex-end;gap:10px;height:100%;width:100%;justify-content:center}
+.colbar{width:52px;position:relative;border-radius:2px 2px 0 0}
+.colbar.perf{background:#1b9e77}
+.colbar.nonp{background:#8c8c8c}
+.colbar span{
+  position:absolute;top:-20px;left:50%;transform:translateX(-50%);
+  font-size:.72rem;font-weight:600;color:#444;white-space:nowrap;
+}
+.collabels{display:flex;justify-content:space-around;gap:24px;padding:8px 8px 0}
+.collabels p{flex:1;max-width:230px;text-align:center;font-size:.74rem;color:#555;line-height:1.35}
+.legend{display:flex;gap:20px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+.legend span{display:flex;align-items:center;gap:7px;font-size:.76rem;color:#444}
+.legend i{width:13px;height:13px;border-radius:2px;display:inline-block}
+.legend .l-perf{background:#1b9e77}
+.legend .l-nonp{background:#8c8c8c}
+/* side-by-side chart pair */
+.graph-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:760px){.graph-pair{grid-template-columns:1fr}}
+.graph-pair .chart-panel{margin:0}
+/* quote bank */
+.quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+@media(max-width:700px){.quote-grid{grid-template-columns:1fr}}
+.qcard{
+  background:var(--box);border:2px dashed var(--box-edge);border-radius:14px;
+  padding:16px 18px;font-style:italic;font-size:.96rem;line-height:1.6;
+  display:flex;flex-direction:column;gap:8px;
+}
+.qcard small{font-style:normal;font-weight:700;color:var(--ink-soft);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;margin-top:auto}
+.qcard .qtheme{
+  align-self:flex-start;font-style:normal;font-family:var(--display);font-weight:700;font-size:.68rem;
+  background:var(--white);border:2px solid var(--ink);border-radius:999px;padding:2px 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <button class="logo" onclick="go('home')"><span class="dot"></span>The Mask That Frees</button>
+  <nav>
+    <button class="navbtn" data-page="home" onclick="go('home')">Homepage</button>
+    <button class="navbtn" data-page="play" onclick="go('play')">Interactive</button>
+    <button class="navbtn" data-page="findings" onclick="go('findings')">Our Findings</button>
+    <button class="navbtn" data-page="resources" onclick="go('resources')">Resource Page</button>
+    <button class="navbtn" data-page="about" onclick="go('about')">About Us</button>
+  </nav>
+</div>
+
+<!-- ================= HOME ================= -->
+<main id="page-home" class="page show">
+  <div class="home-card">
+    <div class="home-inner">
+      <div class="home-left">
+        <h1>The Mask<br>That <span>Frees</span></h1>
+        <p class="desc">A student research project on how performing arts help adolescents build confidence and express emotion — and how the cultures of <strong>Korea, the United States, and Mexico</strong> each teach a different "script" for showing what we feel.</p>
+        <div class="home-fruits" aria-hidden="true">
+          <svg viewBox="0 0 100 100"><use href="#svg-apple"/></svg>
+          <svg viewBox="0 0 100 100"><use href="#svg-avocado"/></svg>
+          <svg viewBox="0 0 100 100"><use href="#svg-pear"/></svg>
+        </div>
+      </div>
+      <div class="home-right">
+        <button class="bigbtn" onclick="go('resources')">resource page</button>
+        <button class="bigbtn" onclick="go('about')">about us</button>
+        <button class="bigbtn" onclick="go('findings')">our findings</button>
+        <div class="cta-row">
+          <span class="click-here" aria-hidden="true">
+            click here!
+            <svg viewBox="0 0 90 44" fill="none">
+              <path d="M4 22 H58 V10 L86 22 L58 34 V22" stroke="#e8564f" stroke-width="5" stroke-linejoin="round" fill="#fff"/>
+            </svg>
+          </span>
+          <button class="bigbtn primary" onclick="go('play')">interactive ✦</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ================= INTERACTIVE ================= -->
+<main id="page-play" class="page">
+  <div class="play-wrap">
+    <div class="play-head">
+      <h2>Three Cultures, Three Fruits 🍉</h2>
+      <p>Tap a floating fruit to explore how each culture teaches young people to express emotion.</p>
+    </div>
+    <div class="add-fruit">
+      <label for="food-name">🍒 add your own! what food represents <em>your</em> culture, and what were you taught about showing emotion?</label>
+      <div class="add-row">
+        <input id="food-name" class="food" type="text" placeholder="your food (e.g. mango)" maxlength="24">
+        <input id="food-opinion" class="opinion" type="text" placeholder="your opinion / experience" maxlength="160">
+        <button onclick="addUserFruit()">add it!</button>
+      </div>
+      <p class="add-note" id="add-note">🌍 Your fruit is saved and shared — everyone who visits this page can see it, and anyone can remove fruits (tap a fruit → remove). Please be kind!</p>
+    </div>
+    <div class="suika-box" id="box" aria-label="Floating fruit playground"></div>
+  </div>
+</main>
+
+<!-- ================= OUR FINDINGS ================= -->
+<main id="page-findings" class="page">
+  <div class="findings-wrap">
+    <div class="find-head">
+      <h2>Our Findings 🔍</h2>
+      <p>What fifteen adolescents told us about performing, confidence, and culture.</p>
+    </div>
+
+    <section class="find-sec">
+      <span class="secnum">Graph 2</span>
+      <h3>What the Interviews Surfaced</h3>
+      <p>Before diving into individual findings, here's the map of the whole dataset — how often each theme appeared across all 15 participants:</p>
+      <div class="chart-panel">
+        <p class="ctitle">Theme Frequency Across 15 Participants</p>
+        <p class="csub">Number of participants (of 15) coded for each theme</p>
+        <div class="hchart" role="img" aria-label="Theme frequency across 15 participants">
+          <div class="hbar"><span class="hlabel">Cultural pressure / restraint</span><span class="htrack"><span class="hfill" style="width:80%"></span></span><span class="hval">12</span></div>
+          <div class="hbar"><span class="hlabel">Comparison to peers</span><span class="htrack"><span class="hfill" style="width:73%"></span></span><span class="hval">11</span></div>
+          <div class="hbar"><span class="hlabel">Confidence transfer (stage→life)</span><span class="htrack"><span class="hfill" style="width:60%"></span></span><span class="hval">9</span></div>
+          <div class="hbar"><span class="hlabel">No regrets</span><span class="htrack"><span class="hfill" style="width:53%"></span></span><span class="hval">8</span></div>
+          <div class="hbar"><span class="hlabel">Body = tool for expression</span><span class="htrack"><span class="hfill" style="width:47%"></span></span><span class="hval">7</span></div>
+          <div class="hbar"><span class="hlabel">Body = judged / insecurity</span><span class="htrack"><span class="hfill" style="width:47%"></span></span><span class="hval">7</span></div>
+          <div class="hbar"><span class="hlabel">Solo = vulnerability</span><span class="htrack"><span class="hfill" style="width:40%"></span></span><span class="hval">6</span></div>
+          <div class="hbar"><span class="hlabel">Group = safety</span><span class="htrack"><span class="hfill" style="width:33%"></span></span><span class="hval">5</span></div>
+          <div class="hbar"><span class="hlabel">Culture: open expression</span><span class="htrack"><span class="hfill" style="width:20%"></span></span><span class="hval">3</span></div>
+        </div>
+        <p class="chart-caption"><b>Figure 2.</b> Theme frequency across 15 participants, from the study's coding matrix. Cultural pressure (12) and peer comparison (11) dominate — which is why culture and comparison became central threads of this study.</p>
+      </div>
+    </section>
+
+    <section class="find-sec">
+      <span class="secnum">2.1</span>
+      <h3>Performance and Confidence Transfer</h3>
+      <p>Performing arts are widely believed to build confidence that extends beyond the stage. The intuition has a basis in Bandura's concept of <strong>self-efficacy</strong>: succeeding at a scary task under safe conditions strengthens belief in your own abilities — and that belief can travel to other settings.</p>
+      <p>Yet the research record is split. A controlled experiment with 237 elementary students (Freeman, Sullivan &amp; Fulton, 2003) found <strong>no significant effect</strong> of creative drama on self-concept — though the authors admitted their broad scales may have missed real changes the drama instructor saw in shy students. Meanwhile, a study of over 2,000 students (Burton, Horowitz &amp; Abeles, 2000) found arts-rich students consistently <strong>more confident and more willing to take risks</strong> — gains that surfaced most clearly in the qualitative data, not the standardized measures.</p>
+      <p>So the disagreement may be less about <em>whether</em> performing builds confidence than about <em>how confidence is measured</em>. When studies listen to young people directly, the effect becomes visible — and our interviews found the same pattern:</p>
+      <div class="chart-panel">
+        <p class="ctitle">Confidence Transfers Off the Stage: Performers vs. Non-Performers</p>
+        <p class="csub">% of group · coded interview responses</p>
+        <div class="colchart" role="img" aria-label="Performers: 66.7% reported confidence transfer, 33.3% no transfer. Non-performers: 0% transfer, 100% no transfer.">
+          <div class="col-group">
+            <div class="cols">
+              <div class="colbar perf" style="height:66.7%"><span>66.7%</span></div>
+              <div class="colbar nonp" style="height:1.5%"><span>0%</span></div>
+            </div>
+          </div>
+          <div class="col-group">
+            <div class="cols">
+              <div class="colbar perf" style="height:33.3%"><span>33.3%</span></div>
+              <div class="colbar nonp" style="height:100%"><span>100%</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="collabels">
+          <p>Reported confidence transfer to daily life</p>
+          <p>Still anxious when watched / no transfer</p>
+        </div>
+        <div class="legend">
+          <span><i class="l-perf"></i>Performers (n = 9)</span>
+          <span><i class="l-nonp"></i>Non-performers (n = 3)</span>
+        </div>
+        <p class="chart-caption"><b>Figure 1.</b> Confidence transfer reported by performers versus non-performers, based on coded interview responses. The small comparison group (n = 3) makes this a striking pattern rather than a statistical result.</p>
+      </div>
+      <div class="quote">“I never thought I could speak easily in public… I'm sure for myself because I feel accepted.”<small>adolescent in a drama program — Asimidou et al.</small></div>
+    </section>
+
+    <section class="find-sec">
+      <span class="secnum">2.4</span>
+      <h3>Performing as Becoming Someone Else: The Mask That Frees</h3>
+      <p>Several participants described a paradox: performing <em>as someone else</em> made it easier to be themselves. Goffman (1959) argued that everyday life is already a performance — we present a version of ourselves to an audience and worry whether it will be accepted. If ordinary life is a role, then stepping into an explicit, scripted role on stage may <strong>relieve</strong> that pressure, because the performer is no longer presenting their own self for judgment.</p>
+      <p>Drama therapists observe exactly this: under the cover of "just acting," the character becomes a shield — protection rather than disguise. Within that safe distance, adolescents can take emotional risks without feeling that <em>they</em> are being evaluated.</p>
+      <div class="quote">On stage you're “someone else, not necessarily yourself” — the character creates distance from the part of you that fears being watched.<small>Student E</small></div>
+      <div class="quote">Theater as a way to express emotions she normally could not access — the character as a vehicle for feelings she would otherwise hold back.<small>Student J</small></div>
+      <p>For both students, the role was not a mask that hid them but one that freed them. The character becomes a kind of <strong>permission slip</strong> — a way to feel and show what the unprotected self cannot. And for a young person taught to suppress emotion, a character may offer the rare cover under which those emotions can finally be expressed.</p>
+    </section>
+
+    <section class="find-sec">
+      <span class="secnum">2.5</span>
+      <h3>Cultural Scripts and Adolescent Wellbeing</h3>
+      <p>Emotional expression is not just personality — it is taught. Hochschild (1979) named the unwritten <strong>"feeling rules"</strong> that govern which emotions we're expected to show, and Röttger-Rössler et&nbsp;al. (2015) showed that communities actively train children in which emotions to express and which to suppress. Our three cultures teach three distinct scripts:</p>
+      <div class="mini-cultures">
+        <div class="mini-culture">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#svg-pear"/></svg>
+          <h5>Korea</h5>
+          <span class="tagword">restraint</span>
+          <p>Children learn to adjust or suppress emotion by social context — <em>nunchi</em>, <em>chemyon</em>, humility, deflecting compliments.</p>
+        </div>
+        <div class="mini-culture">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#svg-apple"/></svg>
+          <h5>United States</h5>
+          <span class="tagword">open expression</span>
+          <p>Individualistic cultures endorse greater emotional expressivity — a 32-country survey of 5,000+ people (Matsumoto et&nbsp;al., 2008).</p>
+        </div>
+        <div class="mini-culture">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#svg-avocado"/></svg>
+          <h5>Mexico</h5>
+          <span class="tagword">warm positivity</span>
+          <p>Collectivistic, but organized around <em>simpatía</em>: warm, open expression of positive emotion and harmony (Salvador et&nbsp;al., 2020).</p>
+        </div>
+      </div>
+      <p>These differences track measurable gaps in how adolescents fare. In PISA 2022, Korean fifteen-year-olds reported life satisfaction of <strong>6.36 — ranking 66th of 73</strong> countries, while Mexican adolescents in earlier rounds scored <strong>above the OECD average</strong>. Cultural scripts are only one factor among many, but a culture that teaches young people to suppress what they feel may offer fewer outlets than one that encourages open expression.</p>
+      <div class="quote">“If you want to cry, just cry.”<small>participant raised in a Latin American context</small></div>
+      <p>This thread ran clearly through our interviews: participants from Korean and Chinese backgrounds described being taught to stay humble and avoid attention, while performing arts often became the rare space where that restraint could be set aside.</p>
+    </section>
+
+    <section class="find-sec">
+      <span class="secnum">Graphs 4–5</span>
+      <h3>More Patterns from the Interviews</h3>
+      <div class="graph-pair">
+        <div class="chart-panel">
+          <p class="ctitle">Group as Shelter, Solo as Exposure</p>
+          <p class="csub">Number of participants</p>
+          <div class="hchart" role="img" aria-label="Group felt safe: 5 participants; solo felt exposing: 6 participants">
+            <div class="hbar"><span class="hlabel">Group felt safe</span><span class="htrack"><span class="hfill" style="width:83%"></span></span><span class="hval">5</span></div>
+            <div class="hbar"><span class="hlabel">Solo felt exposing / vulnerable</span><span class="htrack"><span class="hfill" style="width:100%"></span></span><span class="hval">6</span></div>
+          </div>
+          <p class="chart-caption"><b>Figure 3.</b> The data behind this study's central program-design principle: start people in groups, not solos. As Student L put it, solo too early can break someone.</p>
+        </div>
+        <div class="chart-panel">
+          <p class="ctitle">The Body Reframed — and Where It Isn't</p>
+          <p class="csub">Number of participants</p>
+          <div class="hchart" role="img" aria-label="Body as expressive tool: 7; still felt judged: 7; both at once: 3">
+            <div class="hbar"><span class="hlabel">Reframed body as expressive tool</span><span class="htrack"><span class="hfill" style="width:100%"></span></span><span class="hval">7</span></div>
+            <div class="hbar"><span class="hlabel">Still felt body was judged</span><span class="htrack"><span class="hfill" style="width:100%"></span></span><span class="hval">7</span></div>
+            <div class="hbar"><span class="hlabel">Reported both (tension within)</span><span class="htrack"><span class="hfill" style="width:43%"></span></span><span class="hval">3</span></div>
+          </div>
+          <p class="chart-caption"><b>Figure 4.</b> Reframing the body as an instrument and still feeling judged are equally common, and three students report both at once — a tension more interesting than a clean win.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="find-sec">
+      <span class="secnum">💬</span>
+      <h3>Quote Bank: In Their Own Words</h3>
+      <p>Representative quotes collected from our fifteen interviews, preserved alongside the coding matrix:</p>
+      <div class="quote-grid">
+        <div class="qcard">
+          <span class="qtheme">role distance</span>
+          On stage you're “someone else, not necessarily yourself” — a release from judgment.
+          <small>Student E</small>
+        </div>
+        <div class="qcard">
+          <span class="qtheme">emotional access</span>
+          Theater as a way to express emotions she normally could not access — the character as a vehicle for feelings she would otherwise hold back.
+          <small>Student J</small>
+        </div>
+        <div class="qcard">
+          <span class="qtheme">cultural openness</span>
+          “If you want to cry, just cry.”
+          <small>Participant · Latin American background</small>
+        </div>
+        <div class="qcard">
+          <span class="qtheme">cultural restraint</span>
+          Taught to stay humble, “deny compliments,” and avoid drawing attention to themselves.
+          <small>Participants · Korean &amp; Chinese backgrounds</small>
+        </div>
+        <div class="qcard">
+          <span class="qtheme">group first</span>
+          “Start in a group… solo too early can break someone.”
+          <small>Student L</small>
+        </div>
+        <div class="qcard">
+          <span class="qtheme">comparison reframed</span>
+          “Comparison became information instead of verdict.”
+          <small>Student L</small>
+        </div>
+        <div class="qcard">
+          <span class="qtheme">body as judged</span>
+          “Too skinny to project power.”
+          <small>Student C</small>
+        </div>
+        <div class="qcard">
+          <span class="qtheme">body as tool</span>
+          “My body is my instrument.”
+          <small>Students B &amp; L</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="find-sec">
+      <span class="secnum">3</span>
+      <h3>How We Did It (Methods)</h3>
+      <div class="methods">
+        <div><h5>Design</h5><p>Qualitative — semi-structured interviews with thematic analysis, chosen because standardized scales have missed changes performers describe in their own words.</p></div>
+        <div><h5>Participants</h5><p>15 adolescents &amp; young adults: 12 performers (theater, dance, music, voice) + 3 non-performers. Korean, Chinese, American, Indian American, and Latin American backgrounds.</p></div>
+        <div><h5>Interviews</h5><p>Four parts: performance history · confidence &amp; its transfer · body and self-perception · cultural and family messages about emotion.</p></div>
+        <div><h5>Analysis</h5><p>Thematic coding matrix (confidence transfer, body as tool vs. judged object, cultural restraint, role distance) plus a quote bank of representative statements.</p></div>
+        <div><h5>Ethics</h5><p>Informed consent for all participants; minors protected with pseudonyms (Student A–O). Real names appear nowhere in the analysis.</p></div>
+        <div><h5>Limitations</h5><p>Small convenience sample and a tiny comparison group — patterns are suggestive, not statistical. All data self-reported.</p></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- ================= RESOURCES ================= -->
+<main id="page-resources" class="page">
+  <div class="simple-page">
+    <div class="panel">
+      <h2>Resource Page 📚</h2>
+      <p>Key sources behind this study's literature review:</p>
+      <ul>
+        <li>Hochschild (1979) — <em>Emotion Work, Feeling Rules, and Social Structure</em>. Origin of the "feeling rules" concept: cultures dictate which emotions to show or suppress.</li>
+        <li>Goffman (1959) — <em>The Presentation of Self in Everyday Life</em>. Everyday life as performance; the role as relief from self-presentation.</li>
+        <li>Freeman, Sullivan &amp; Fulton (2003) — Controlled experiment (n=237) finding no significant effect of creative drama on self-concept, but noting scales may have missed real change.</li>
+        <li>Burton, Horowitz &amp; Abeles (2000) — Study of 2,000+ students: rich arts experience linked to confidence and risk-taking, clearest in qualitative data.</li>
+        <li>Matsumoto, Yoo &amp; Fontaine (2008) — 32-country survey (5,000+ people): individualistic cultures endorse greater emotional expressivity.</li>
+        <li>Röttger-Rössler et&nbsp;al. (2015) — Cross-cultural childrearing: communities actively teach which emotions to express or suppress.</li>
+        <li>Salvador et&nbsp;al. (2020) — Simpatía: warm, open expression of positive emotion in Latin American culture.</li>
+        <li>OECD PISA (2022) — Korean fifteen-year-olds' life satisfaction: 6.36, ranking 66th of 73; Mexican adolescents above the OECD average in earlier rounds.</li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<!-- ================= ABOUT ================= -->
+<main id="page-about" class="page">
+  <div class="simple-page">
+    <div class="panel">
+      <h2>About Us 🎭</h2>
+      <p>This website presents a qualitative research study on performing arts and adolescent development. Fifteen adolescents and young adults were interviewed — twelve performers in theater, dance, instrumental music, and vocal performance, plus three non-performers as a comparison group.</p>
+      <h3>What we asked</h3>
+      <p>Semi-structured interviews covered four areas: participants' history with performance; whether confidence developed on stage carried into everyday life; how performing shaped body image and self-perception; and what messages participants' cultures and families gave them about expressing emotion.</p>
+      <h3>What we found</h3>
+      <p>Six of nine performers described confidence that transferred into presentations and social life — none of the three non-performers did. Many described a paradox: performing <em>as someone else</em> made it easier to be themselves. And a cultural thread ran through it all: participants raised with emotional restraint often found in performance a rare space where those feelings could finally be expressed.</p>
+      <h3>A note on the sample</h3>
+      <p>This was a small convenience sample, so the patterns here are suggestive, not statistical. All participants are identified by pseudonyms (Student A–O) to protect their privacy.</p>
+    </div>
+  </div>
+</main>
+
+<footer>made with 🍉 by Si Ah Jang · 2026</footer>
+
+<!-- ================= EXPERIENCE MODAL ================= -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="exp-title">
+  <div class="exp-card">
+    <button class="exp-close" onclick="closeExp()" aria-label="Close">✕</button>
+    <div class="exp-head">
+      <svg viewBox="0 0 100 100" id="exp-fruit"><use href="#svg-apple"/></svg>
+      <div>
+        <p class="eyebrow" id="exp-eyebrow">Experience</p>
+        <h3 id="exp-title">United States</h3>
+        <span class="exp-badge" id="exp-badge">🍎 the apple</span>
+      </div>
+    </div>
+    <div id="exp-body"></div>
+    <div class="prompt-zone">
+      <label for="prompt-input" id="prompt-label">prompt: what did <em>your</em> culture teach you about showing emotion?</label>
+      <div class="prompt-row">
+        <input id="prompt-input" type="text" placeholder="[ ENTER HERE ]" maxlength="200">
+        <button onclick="addResponse()">share</button>
+      </div>
+      <div class="responses" id="responses"></div>
+      <p class="prompt-note">Responses stay on this page only — nothing is uploaded or saved.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= FRUIT SVG DEFS ================= -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- APPLE : United States -->
+    <g id="svg-apple">
+      <path d="M50 20 Q52 8 62 6" stroke="#7a5230" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <ellipse cx="63" cy="12" rx="10" ry="6" fill="#6fbf5a" transform="rotate(-24 63 12)"/>
+      <path d="M50 26 C26 14 8 34 12 58 C15 78 32 94 50 94 C68 94 85 78 88 58 C92 34 74 14 50 26 Z" fill="#e8564f"/>
+      <path d="M50 26 C40 20 30 22 24 30 C36 26 44 30 50 36 C56 30 64 26 76 30 C70 22 60 20 50 26Z" fill="#c93f3a" opacity=".6"/>
+      <ellipse cx="30" cy="38" rx="8" ry="12" fill="#fff" opacity=".5" transform="rotate(18 30 38)"/>
+      <circle cx="38" cy="58" r="4" fill="#3d2b1f"/>
+      <circle cx="62" cy="58" r="4" fill="#3d2b1f"/>
+      <path d="M43 68 Q50 74 57 68" stroke="#3d2b1f" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <circle cx="28" cy="66" r="5" fill="#ff9d94" opacity=".7"/>
+      <circle cx="72" cy="66" r="5" fill="#ff9d94" opacity=".7"/>
+    </g>
+    <!-- AVOCADO : Mexico -->
+    <g id="svg-avocado">
+      <path d="M50 6 C60 6 66 14 66 24 C66 34 78 42 78 62 C78 82 66 96 50 96 C34 96 22 82 22 62 C22 42 34 34 34 24 C34 14 40 6 50 6 Z" fill="#4e7a3a"/>
+      <path d="M50 12 C58 12 62 18 62 26 C62 35 72 44 72 62 C72 78 62 90 50 90 C38 90 28 78 28 62 C28 44 38 35 38 26 C38 18 42 12 50 12 Z" fill="#bde08a"/>
+      <circle cx="50" cy="64" r="16" fill="#9a6b3f"/>
+      <ellipse cx="45" cy="59" rx="5" ry="7" fill="#b98a5c" opacity=".8" transform="rotate(-20 45 59)"/>
+      <circle cx="40" cy="38" r="3.6" fill="#3d2b1f"/>
+      <circle cx="60" cy="38" r="3.6" fill="#3d2b1f"/>
+      <path d="M43 44 Q50 50 57 44" stroke="#3d2b1f" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+      <circle cx="33" cy="44" r="4" fill="#ff9d94" opacity=".6"/>
+      <circle cx="67" cy="44" r="4" fill="#ff9d94" opacity=".6"/>
+      <ellipse cx="36" cy="22" rx="4" ry="7" fill="#fff" opacity=".35" transform="rotate(18 36 22)"/>
+    </g>
+    <!-- KOREAN PEAR : Korea -->
+    <g id="svg-pear">
+      <path d="M50 18 Q50 8 58 4" stroke="#7a5230" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <circle cx="50" cy="54" r="40" fill="#f2c258"/>
+      <circle cx="50" cy="54" r="40" fill="none" stroke="#dba63c" stroke-width="3"/>
+      <ellipse cx="34" cy="38" rx="9" ry="13" fill="#fff" opacity=".45" transform="rotate(20 34 38)"/>
+      <g fill="#d99f37" opacity=".8">
+        <circle cx="28" cy="60" r="1.7"/><circle cx="40" cy="78" r="1.7"/><circle cx="66" cy="74" r="1.7"/>
+        <circle cx="74" cy="52" r="1.7"/><circle cx="58" cy="86" r="1.7"/><circle cx="22" cy="46" r="1.7"/>
+      </g>
+      <path d="M36 52 Q39 48 42 52" stroke="#3d2b1f" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+      <path d="M58 52 Q61 48 64 52" stroke="#3d2b1f" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+      <path d="M44 62 Q50 67 56 62" stroke="#3d2b1f" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+      <circle cx="30" cy="60" r="4.5" fill="#ffb3a0" opacity=".7"/>
+      <circle cx="70" cy="60" r="4.5" fill="#ffb3a0" opacity=".7"/>
+    </g>
+    <!-- little decorative strawberry -->
+    <g id="svg-berry">
+      <path d="M50 14 L58 24 L42 24 Z" fill="#6fbf5a"/>
+      <path d="M50 20 C72 20 82 38 74 60 C68 78 58 92 50 92 C42 92 32 78 26 60 C18 38 28 20 50 20 Z" fill="#ef6a86"/>
+      <g fill="#ffe9a8"><circle cx="40" cy="44" r="2.4"/><circle cx="60" cy="44" r="2.4"/><circle cx="50" cy="60" r="2.4"/><circle cx="38" cy="68" r="2.4"/><circle cx="62" cy="68" r="2.4"/></g>
+      <circle cx="43" cy="52" r="2.6" fill="#3d2b1f"/><circle cx="57" cy="52" r="2.6" fill="#3d2b1f"/>
+      <path d="M46 60 Q50 63 54 60" stroke="#3d2b1f" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    </g>
+    <!-- little decorative grape -->
+    <g id="svg-grape">
+      <g fill="#a06bd4" stroke="#8a54c0" stroke-width="2">
+        <circle cx="36" cy="42" r="15"/><circle cx="64" cy="42" r="15"/>
+        <circle cx="50" cy="60" r="15"/><circle cx="30" cy="66" r="13"/><circle cx="70" cy="66" r="13"/>
+      </g>
+      <path d="M50 30 Q50 18 58 14" stroke="#6fbf5a" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <circle cx="45" cy="58" r="2.4" fill="#2f2140"/><circle cx="55" cy="58" r="2.4" fill="#2f2140"/>
+      <path d="M46 65 Q50 68 54 65" stroke="#2f2140" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    </g>
+  </defs>
+</svg>
+
+<script>
+/* ---------------- page routing ---------------- */
+function go(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));
+  document.getElementById('page-'+name).classList.add('show');
+  document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active', b.dataset.page===name));
+  window.scrollTo({top:0, behavior:'auto'});
+  if(name==='play'){ startPhysics(); syncSharedFruits(); }
+}
+document.querySelector('.navbtn[data-page="home"]').classList.add('active');
+
+/* ---------------- culture content ---------------- */
+const CULTURES = {
+  us:{
+    title:'United States', badge:'🍎 the apple (or orange!)', svg:'#svg-apple',
+    body:`
+      <p><strong>Script: open expression.</strong> Surveying over 5,000 people across 32 countries, Matsumoto, Yoo &amp; Fontaine (2008) found that individualistic cultures like the U.S. endorse greater overall emotional expressivity than collectivistic ones. Showing what you feel is treated as honest, healthy, and even expected.</p>
+      <div class="exp-quote">“She looks someone in the eye.”<small>a drama teacher describing a once-timid student — Burton et al. (2000)</small></div>
+      <p>In American arts education, that expressivity has room to grow: students with rich arts experience were consistently more confident and more willing to take risks than peers with little arts exposure.</p>
+      <p class="exp-fact">🍎 Apples and oranges: everyday, individual fruits — one per person, each on its own. A fitting emblem for a culture where the individual self is expected to speak up.</p>`
+  },
+  mx:{
+    title:'Mexico', badge:'🥑 the avocado', svg:'#svg-avocado',
+    body:`
+      <p><strong>Script: warm positivity.</strong> Mexican and Latin American culture is also collectivistic — but it's organized around <em>simpatía</em>, a value that encourages the warm, open expression of positive emotion, politeness, and interpersonal harmony (Salvador et&nbsp;al., 2020).</p>
+      <div class="exp-quote">“If you want to cry, just cry.”<small>a study participant raised in a Latin American context</small></div>
+      <p>The pattern shows up in wellbeing data too: Mexican adolescents in earlier PISA rounds reported life satisfaction <strong>above the OECD average</strong> — a striking contrast with Korea.</p>
+      <p class="exp-fact">🥑 The avocado: soft and green on the inside, generous, made for sharing — like <em>simpatía</em> itself, warmth offered openly to others.</p>`
+  },
+  kr:{
+    title:'Korea', badge:'🍐 the Korean pear (bae)', svg:'#svg-pear',
+    body:`
+      <p><strong>Script: restraint.</strong> Research on East Asian socialization finds that Korean parents emphasize emotional restraint and shame more than European American parents, and children display less overt sadness and excitement as a result. Concepts like <em>nunchi</em> (sensitivity to others) and <em>chemyon</em> (social face) teach children to adjust or suppress emotion by social context.</p>
+      <div class="exp-quote">Participants from Korean and Chinese backgrounds described being taught to stay humble, deny compliments, and avoid drawing attention to themselves.<small>from this study's interviews</small></div>
+      <p>The stakes are visible in the data: in PISA 2022, Korean fifteen-year-olds reported life satisfaction of <strong>6.36 — ranking 66th of 73</strong> participating countries. For many of this study's Korean-background participants, performing arts became the rare space where restraint could be set aside.</p>
+      <p class="exp-fact">🍐 The Korean pear (bae): round and golden, its sweetness hidden under a firm, quiet skin — gentle inside, reserved outside.</p>`
+  }
+};
+
+/* ---------------- experience modal ---------------- */
+const overlay = document.getElementById('overlay');
+function openExp(key){
+  const c = CULTURES[key];
+  document.getElementById('exp-title').textContent = c.title;
+  document.getElementById('exp-badge').textContent = c.badge;
+  document.getElementById('exp-body').innerHTML = c.body;
+  document.getElementById('exp-fruit').innerHTML = `<use href="${c.svg}"/>`;
+  document.getElementById('responses').innerHTML = '';
+  document.getElementById('prompt-input').value = '';
+  overlay.classList.add('show');
+  paused = true;
+}
+function closeExp(){ overlay.classList.remove('show'); paused = false; }
+overlay.addEventListener('click', e=>{ if(e.target===overlay) closeExp(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeExp(); });
+function addResponse(){
+  const input = document.getElementById('prompt-input');
+  const text = input.value.trim();
+  if(!text) return;
+  const div = document.createElement('div');
+  div.textContent = '💬 ' + text;
+  document.getElementById('responses').appendChild(div);
+  input.value = '';
+}
+document.getElementById('prompt-input').addEventListener('keydown', e=>{ if(e.key==='Enter') addResponse(); });
+
+/* ---------------- user-added fruits ---------------- */
+const USER_COLORS = [
+  {fill:'#ff9f68', dark:'#e07b3f'},  // orange-ish
+  {fill:'#f6d860', dark:'#d9b23a'},  // lemon-ish
+  {fill:'#ef6a86', dark:'#d14b68'},  // berry pink
+  {fill:'#9ed36a', dark:'#77ad46'},  // green
+  {fill:'#a06bd4', dark:'#8a54c0'},  // grape purple
+  {fill:'#7fd4d1', dark:'#57b2ae'},  // melon teal
+];
+const MAX_USER_FRUITS = 20;
+const API = '/api/fruits';
+let apiOK = true;                // falls back to session-only if the server is unreachable
+let sharedFruits = [];           // records: {id, food, opinion}
+const spawnedEls = new Map();    // id -> physics object
+
+function markOffline(){
+  if(!apiOK) return;
+  apiOK = false;
+  const note = document.getElementById('add-note');
+  if(note) note.textContent = '⚠️ Could not reach the server — fruits you add will last for this visit only.';
+}
+
+function hashColor(id){
+  let h = 0;
+  for(const ch of id) h = (h*31 + ch.charCodeAt(0)) >>> 0;
+  return USER_COLORS[h % USER_COLORS.length];
+}
+
+function spawnFruitRecord(rec, dropIn){
+  if(spawnedEls.has(rec.id)) return;
+  const c = hashColor(rec.id);
+  const r = 24 + (rec.id.charCodeAt(0) % 9); // small fruit, size stable per record
+  const el = document.createElement('button');
+  el.className = 'fruit';
+  el.style.width = el.style.height = (r*2)+'px';
+  el.innerHTML = userFruitSVG(c) + `<span class="tag">${escapeHTML(rec.food)}</span>`;
+  el.setAttribute('aria-label', 'Fruit added by a visitor: '+rec.food);
+  el.addEventListener('click', ()=>openUserExp(rec));
+  box.appendChild(el);
+  const W = box.clientWidth, H = box.clientHeight;
+  const f = {
+    el, r,
+    x: dropIn ? W/2 + (Math.random()-.5)*80 : 60 + Math.random()*Math.max(W-120, 60),
+    y: dropIn ? r + 20 : 60 + Math.random()*Math.max(H-120, 60),
+    vx:(Math.random()-.5)*1.4,
+    vy: dropIn ? 1.2 : (Math.random()-.5)*1.2,
+    rot:(Math.random()-.5)*14,
+    vrot:(Math.random()-.5)*.3
+  };
+  fruits.push(f);
+  spawnedEls.set(rec.id, f);
+  draw(f);
+}
+
+function removeFruitEl(id){
+  const f = spawnedEls.get(id);
+  if(!f) return;
+  f.el.remove();
+  const i = fruits.indexOf(f);
+  if(i > -1) fruits.splice(i, 1);
+  spawnedEls.delete(id);
+}
+
+async function fetchSharedFruits(){
+  if(!apiOK) return;
+  try{
+    const res = await fetch(API);
+    if(!res.ok) throw new Error('bad status');
+    const data = await res.json();
+    if(Array.isArray(data.fruits)) sharedFruits = data.fruits;
+  }catch(e){ markOffline(); }
+}
+
+async function syncSharedFruits(){
+  await fetchSharedFruits();
+  // remove fruits someone else deleted
+  for(const id of [...spawnedEls.keys()]){
+    if(!sharedFruits.some(r=>r.id===id)) removeFruitEl(id);
+  }
+  // spawn fruits added by others
+  sharedFruits.forEach(rec=>spawnFruitRecord(rec, false));
+}
+
+async function addUserFruit(){
+  const nameInput = document.getElementById('food-name');
+  const opInput = document.getElementById('food-opinion');
+  const food = nameInput.value.trim();
+  const opinion = opInput.value.trim();
+  if(!food){ nameInput.focus(); return; }
+  startPhysics();
+  let rec = null;
+  if(apiOK){
+    try{
+      const res = await fetch(API, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({action:'add', food, opinion})
+      });
+      const data = await res.json();
+      if(!res.ok){ alert(data.error || 'Could not add your fruit — try again!'); return; }
+      if(Array.isArray(data.fruits)) sharedFruits = data.fruits;
+      rec = data.added;
+    }catch(e){ markOffline(); }
+  }
+  if(!apiOK){
+    if(sharedFruits.length >= MAX_USER_FRUITS){
+      alert('The box is full of fruit! 🍇 Remove one first (tap a fruit → remove).');
+      return;
+    }
+    rec = { id: Date.now().toString(36) + Math.random().toString(36).slice(2,6), food, opinion };
+    sharedFruits.push(rec);
+  }
+  if(rec) spawnFruitRecord(rec, true);            // drop yours in from the top
+  sharedFruits.forEach(r=>spawnFruitRecord(r, false)); // and show any new ones from others
+  for(const id of [...spawnedEls.keys()]){
+    if(!sharedFruits.some(r=>r.id===id)) removeFruitEl(id);
+  }
+  nameInput.value=''; opInput.value='';
+  nameInput.focus();
+}
+document.getElementById('food-opinion').addEventListener('keydown', e=>{ if(e.key==='Enter') addUserFruit(); });
+document.getElementById('food-name').addEventListener('keydown', e=>{ if(e.key==='Enter') addUserFruit(); });
+
+async function deleteUserFruit(id){
+  if(apiOK){
+    try{
+      const res = await fetch(API, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({action:'delete', id})
+      });
+      const data = await res.json();
+      if(res.ok && Array.isArray(data.fruits)) sharedFruits = data.fruits;
+    }catch(e){ markOffline(); }
+  }
+  if(!apiOK) sharedFruits = sharedFruits.filter(r=>r.id!==id);
+  removeFruitEl(id);
+  closeExp();
+}
+
+function openUserExp(rec){
+  document.getElementById('exp-title').textContent = rec.food;
+  document.getElementById('exp-badge').textContent = '🍒 added by a visitor';
+  document.getElementById('exp-fruit').innerHTML = '<use href="#svg-berry"/>';
+  document.getElementById('exp-body').innerHTML = (rec.opinion
+    ? `<div class="exp-quote">“${escapeHTML(rec.opinion)}”<small>a visitor's experience</small></div>`
+    : `<p>This visitor added <strong>${escapeHTML(rec.food)}</strong> as the food that represents their culture.</p>`)
+    + `<button class="del-fruit" onclick="deleteUserFruit('${rec.id}')">remove this fruit 🗑️</button>`;
+  document.getElementById('responses').innerHTML = '';
+  document.getElementById('prompt-input').value = '';
+  overlay.classList.add('show');
+  paused = true;
+}
+
+// gently check for new fruits from other visitors every 30s while on this page
+setInterval(()=>{
+  const playVisible = document.getElementById('page-play').classList.contains('show');
+  if(playVisible && started && !overlay.classList.contains('show')) syncSharedFruits();
+}, 30000);
+
+/* ---------------- floating fruit physics ---------------- */
+
+function userFruitSVG(c){
+  return `<svg viewBox="0 0 100 100" aria-hidden="true">
+    <path d="M50 20 Q50 10 58 6" stroke="#7a5230" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <ellipse cx="60" cy="12" rx="8" ry="5" fill="#6fbf5a" transform="rotate(-20 60 12)"/>
+    <circle cx="50" cy="56" r="38" fill="${c.fill}" stroke="${c.dark}" stroke-width="3"/>
+    <ellipse cx="36" cy="42" rx="8" ry="11" fill="#fff" opacity=".45" transform="rotate(18 36 42)"/>
+    <circle cx="40" cy="56" r="3.6" fill="#3d2b1f"/>
+    <circle cx="60" cy="56" r="3.6" fill="#3d2b1f"/>
+    <path d="M44 66 Q50 71 56 66" stroke="#3d2b1f" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+    <circle cx="32" cy="63" r="4.5" fill="#fff" opacity=".55"/>
+    <circle cx="68" cy="63" r="4.5" fill="#fff" opacity=".55"/>
+  </svg>`;
+}
+
+function escapeHTML(s){
+  return s.replace(/[&<>"']/g, ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+}
+
+/* ---------------- floating fruit physics ---------------- */
+const box = document.getElementById('box');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let fruits = [], started = false, paused = false;
+
+const FRUIT_DEFS = [
+  {key:'mx', svg:'#svg-avocado', r:72, tag:'avocado — Mexico', click:true},
+  {key:'us', svg:'#svg-apple',  r:56, tag:'apple — United States', click:true},
+  {key:'kr', svg:'#svg-pear',   r:50, tag:'pear — Korea', click:true},
+  {key:null, svg:'#svg-berry',  r:24, tag:null, click:false},
+  {key:null, svg:'#svg-berry',  r:20, tag:null, click:false},
+  {key:null, svg:'#svg-grape',  r:26, tag:null, click:false},
+  {key:null, svg:'#svg-grape',  r:22, tag:null, click:false},
+];
+
+function startPhysics(){
+  if(started) return;
+  started = true;
+  const W = box.clientWidth, H = box.clientHeight;
+  FRUIT_DEFS.forEach((d,i)=>{
+    const el = d.click ? document.createElement('button') : document.createElement('div');
+    el.className = 'fruit';
+    el.style.width = el.style.height = (d.r*2)+'px';
+    el.style.cursor = d.click ? 'pointer' : 'default';
+    el.innerHTML = `<svg viewBox="0 0 100 100" aria-hidden="true"><use href="${d.svg}"/></svg>` +
+      (d.tag ? `<span class="tag">${d.tag}</span>` : '');
+    if(d.click){
+      el.setAttribute('aria-label','Open experience: '+d.tag);
+      el.addEventListener('click', ()=>openExp(d.key));
+    }
+    box.appendChild(el);
+    fruits.push({
+      el, r:d.r,
+      x: 60 + Math.random()*(W-120),
+      y: 60 + Math.random()*(H-120),
+      vx:(Math.random()-.5)*1.2,
+      vy:(Math.random()-.5)*1.2,
+      rot:(Math.random()-.5)*10,
+      vrot:(Math.random()-.5)*.25
+    });
+  });
+  if(reduceMotion){
+    // static, evenly spread
+    fruits.forEach((f,i)=>{
+      f.x = (i+1)*(box.clientWidth/(fruits.length+1));
+      f.y = box.clientHeight/2 + (i%2? -60:60);
+      draw(f);
+    });
+    return;
+  }
+  requestAnimationFrame(tick);
+}
+
+function draw(f){
+  f.el.style.transform = `translate(${f.x-f.r}px, ${f.y-f.r}px) rotate(${f.rot}deg)`;
+}
+
+function tick(){
+  const W = box.clientWidth, H = box.clientHeight;
+  if(!paused){
+    for(const f of fruits){
+      f.x += f.vx; f.y += f.vy; f.rot += f.vrot;
+      // gentle drift so they never fully stop
+      f.vx += (Math.random()-.5)*0.03;
+      f.vy += (Math.random()-.5)*0.03;
+      // speed cap
+      const sp = Math.hypot(f.vx,f.vy);
+      const max = 1.4;
+      if(sp>max){ f.vx = f.vx/sp*max; f.vy = f.vy/sp*max; }
+      // walls
+      if(f.x < f.r+16){ f.x = f.r+16; f.vx = Math.abs(f.vx); }
+      if(f.x > W-f.r-16){ f.x = W-f.r-16; f.vx = -Math.abs(f.vx); }
+      if(f.y < f.r+10){ f.y = f.r+10; f.vy = Math.abs(f.vy); }
+      if(f.y > H-f.r-10){ f.y = H-f.r-10; f.vy = -Math.abs(f.vy); }
+    }
+    // soft collisions
+    for(let i=0;i<fruits.length;i++){
+      for(let j=i+1;j<fruits.length;j++){
+        const a=fruits[i], b=fruits[j];
+        const dx=b.x-a.x, dy=b.y-a.y;
+        const dist=Math.hypot(dx,dy)||1, min=a.r+b.r;
+        if(dist<min){
+          const nx=dx/dist, ny=dy/dist, push=(min-dist)/2;
+          a.x-=nx*push; a.y-=ny*push;
+          b.x+=nx*push; b.y+=ny*push;
+          const avn=a.vx*nx+a.vy*ny, bvn=b.vx*nx+b.vy*ny;
+          const diff=bvn-avn;
+          a.vx+=nx*diff*.6; a.vy+=ny*diff*.6;
+          b.vx-=nx*diff*.6; b.vy-=ny*diff*.6;
+        }
+      }
+    }
+    fruits.forEach(draw);
+  }
+  requestAnimationFrame(tick);
+}
+
+window.addEventListener('resize', ()=>{
+  // keep fruits inside on resize
+  const W = box.clientWidth, H = box.clientHeight;
+  fruits.forEach(f=>{
+    f.x = Math.min(Math.max(f.x, f.r+16), W-f.r-16);
+    f.y = Math.min(Math.max(f.y, f.r+10), H-f.r-10);
+    draw(f);
+  });
+});
+</script>
+</body>
+</html>
