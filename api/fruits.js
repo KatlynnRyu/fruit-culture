@@ -38,7 +38,7 @@ export default async function handler(req, res) {
 
       if (body.action === 'add') {
         const food = String(body.food || '').trim().slice(0, 24);
-        const opinion = String(body.opinion || '').trim().slice(0, 160);
+        const opinion = String(body.opinion || '').trim().slice(0, 600);
         if (!food) return res.status(400).json({ error: 'Food name is required.' });
         if (fruits.length >= MAX_FRUITS) {
           return res.status(400).json({ error: 'The box is full of fruit! 🍇 Remove one first.' });
