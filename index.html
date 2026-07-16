@@ -151,12 +151,12 @@ body::before{
 }
 .add-fruit label{font-family:var(--display);font-weight:700;font-size:.95rem;display:block;margin-bottom:10px}
 .add-row{display:flex;gap:10px;flex-wrap:wrap}
-.add-row input{
+.add-row input,.add-row textarea{
   font-family:var(--body);font-size:.92rem;color:var(--ink);
   border:2.5px solid var(--ink);border-radius:12px;padding:9px 13px;background:var(--bg);
 }
 .add-row input.food{flex:1;min-width:130px}
-.add-row input.opinion{flex:2.2;min-width:180px}
+.add-row .opinion{flex:1 1 100%;min-height:64px;resize:vertical;line-height:1.5}
 .add-row button{
   font-family:var(--display);font-weight:700;font-size:.92rem;
   background:var(--red);color:#fff;border:2.5px solid var(--ink);border-radius:12px;
@@ -453,7 +453,7 @@ footer{
       <label for="food-name">🍒 add your own! what food represents <em>your</em> culture, and what were you taught about showing emotion?</label>
       <div class="add-row">
         <input id="food-name" class="food" type="text" placeholder="your food (e.g. mango)" maxlength="24">
-        <input id="food-opinion" class="opinion" type="text" placeholder="your opinion / experience" maxlength="160">
+        <textarea id="food-opinion" class="opinion" rows="3" placeholder="your opinion / experience — share your story! (up to 600 characters)" maxlength="600"></textarea>
         <button onclick="addUserFruit()">add it!</button>
       </div>
       <p class="add-note" id="add-note">🌍 Your fruit is saved and shared — everyone who visits this page can see it, and anyone can remove fruits (tap a fruit → remove). Please be kind!</p>
@@ -1051,7 +1051,7 @@ async function addUserFruit(){
   nameInput.value=''; opInput.value='';
   nameInput.focus();
 }
-document.getElementById('food-opinion').addEventListener('keydown', e=>{ if(e.key==='Enter') addUserFruit(); });
+document.getElementById('food-opinion').addEventListener('keydown', e=>{ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); addUserFruit(); } });
 document.getElementById('food-name').addEventListener('keydown', e=>{ if(e.key==='Enter') addUserFruit(); });
 
 async function deleteUserFruit(id){
@@ -1082,7 +1082,7 @@ function openUserExp(rec){
       ? `<text x="50" y="68" text-anchor="middle" font-size="58">${emo}</text>`
       : '<use href="#svg-berry"/>';
   document.getElementById('exp-body').innerHTML = (rec.opinion
-    ? `<div class="exp-quote">“${escapeHTML(rec.opinion)}”<small>a visitor's experience</small></div>`
+    ? `<div class="exp-quote">“${escapeHTML(rec.opinion).replace(/\n/g,'<br>')}”<small>a visitor's experience</small></div>`
     : `<p>This visitor added <strong>${escapeHTML(rec.food)}</strong> as the food that represents their culture.</p>`)
     + `<button class="del-fruit" onclick="deleteUserFruit('${rec.id}')">remove this fruit 🗑️</button>`;
   document.getElementById('responses').innerHTML = '';
