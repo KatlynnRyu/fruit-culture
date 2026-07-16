@@ -195,6 +195,7 @@ body::before{
   transition:filter .15s;
 }
 .fruit svg{display:block;width:100%;height:100%}
+.fruit .emoji-fruit{display:flex;width:100%;height:100%;align-items:center;justify-content:center;line-height:1}
 .fruit:hover{filter:drop-shadow(0 6px 6px rgba(92,70,50,.3)) brightness(1.04)}
 .fruit .tag{
   position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);
@@ -763,6 +764,24 @@ footer{
       <circle cx="30" cy="60" r="4.5" fill="#ffb3a0" opacity=".7"/>
       <circle cx="70" cy="60" r="4.5" fill="#ffb3a0" opacity=".7"/>
     </g>
+    <!-- LYCHEE : custom fruit (no emoji exists) -->
+    <g id="svg-lychee">
+      <path d="M50 20 Q50 10 58 5" stroke="#7a5230" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <ellipse cx="61" cy="11" rx="9" ry="5" fill="#6fbf5a" transform="rotate(-22 61 11)"/>
+      <circle cx="50" cy="57" r="37" fill="#ef7285" stroke="#d3536a" stroke-width="3"/>
+      <g fill="#d3536a" opacity=".55">
+        <circle cx="30" cy="48" r="1.8"/><circle cx="40" cy="38" r="1.8"/><circle cx="56" cy="34" r="1.8"/>
+        <circle cx="68" cy="46" r="1.8"/><circle cx="72" cy="62" r="1.8"/><circle cx="62" cy="80" r="1.8"/>
+        <circle cx="44" cy="86" r="1.8"/><circle cx="30" cy="72" r="1.8"/><circle cx="24" cy="58" r="1.8"/>
+        <circle cx="52" cy="90" r="1.8"/>
+      </g>
+      <ellipse cx="36" cy="42" rx="8" ry="11" fill="#fff" opacity=".4" transform="rotate(18 36 42)"/>
+      <circle cx="41" cy="56" r="3.6" fill="#3d2b1f"/>
+      <circle cx="59" cy="56" r="3.6" fill="#3d2b1f"/>
+      <path d="M45 65 Q50 70 55 65" stroke="#3d2b1f" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+      <circle cx="32" cy="63" r="4.5" fill="#fff" opacity=".55"/>
+      <circle cx="68" cy="63" r="4.5" fill="#fff" opacity=".55"/>
+    </g>
     <!-- little decorative strawberry -->
     <g id="svg-berry">
       <path d="M50 14 L58 24 L42 24 Z" fill="#6fbf5a"/>
@@ -878,6 +897,62 @@ function hashColor(id){
   return USER_COLORS[h % USER_COLORS.length];
 }
 
+
+/* map food names to emoji (specific words first so "pineapple" wins over "apple") */
+const FOOD_EMOJI = [
+  [['pineapple'],'🍍'], [['grapefruit'],'🍊'], [['green apple'],'🍏'],
+  [['mango','manggo'],'🥭'], [['banana'],'🍌'], [['apple'],'🍎'],
+  [['orange','tangerine','mandarin','clementine'],'🍊'], [['pear','bae'],'🍐'],
+  [['peach'],'🍑'], [['cherry','cherries'],'🍒'], [['strawberry'],'🍓'],
+  [['grape'],'🍇'], [['watermelon'],'🍉'], [['melon','cantaloupe','honeydew'],'🍈'],
+  [['lemon','lime','yuzu'],'🍋'], [['coconut'],'🥥'], [['kiwi'],'🥝'],
+  [['tomato'],'🍅'], [['avocado'],'🥑'], [['blueberry','berries'],'🫐'],
+  [['olive'],'🫒'], [['corn','elote'],'🌽'], [['pepper','chili','chile','jalapeno'],'🌶️'],
+  [['cucumber','pickle'],'🥒'], [['broccoli'],'🥦'], [['carrot'],'🥕'],
+  [['garlic'],'🧄'], [['onion'],'🧅'], [['mushroom'],'🍄'], [['potato'],'🥔'],
+  [['sweet potato','goguma'],'🍠'], [['peanut','nuts'],'🥜'], [['bean'],'🫘'],
+  [['kimchi','cabbage','lettuce'],'🥬'], [['bread'],'🍞'], [['croissant'],'🥐'],
+  [['baguette'],'🥖'], [['pretzel'],'🥨'], [['bagel'],'🥯'], [['pancake','hotteok'],'🥞'],
+  [['waffle'],'🧇'], [['cheese'],'🧀'], [['bulgogi','meat','steak','bbq','barbecue'],'🍖'],
+  [['chicken','fried chicken'],'🍗'], [['bacon'],'🥓'], [['burger','hamburger'],'🍔'],
+  [['fries'],'🍟'], [['pizza'],'🍕'], [['hot dog','hotdog'],'🌭'],
+  [['sandwich'],'🥪'], [['taco'],'🌮'], [['burrito'],'🌯'], [['tamale'],'🫔'],
+  [['tortilla','naan','roti','flatbread','arepa','pita'],'🫓'], [['falafel'],'🧆'],
+  [['salad'],'🥗'], [['ramen','ramyeon','noodle','pho','udon'],'🍜'],
+  [['pasta','spaghetti'],'🍝'], [['bibimbap','rice bowl','fried rice'],'🍚'],
+  [['curry'],'🍛'], [['sushi'],'🍣'], [['bento'],'🍱'],
+  [['dumpling','mandu','gyoza','empanada','pierogi'],'🥟'],
+  [['gimbap','kimbap','onigiri','rice ball'],'🍙'],
+  [['tteokbokki','dango','mochi','rice cake','tteok'],'🍡'],
+  [['oden','skewer'],'🍢'], [['shaved ice','bingsu','bingsoo'],'🍧'],
+  [['ice cream','gelato'],'🍨'], [['donut','doughnut'],'🍩'], [['cookie'],'🍪'],
+  [['cake'],'🍰'], [['cupcake'],'🧁'], [['pie'],'🥧'], [['chocolate','choco'],'🍫'],
+  [['candy'],'🍬'], [['lollipop'],'🍭'], [['boba','bubble tea','milk tea'],'🧋'], [['honey'],'🍯'], [['milk'],'🥛'],
+  [['coffee'],'☕'], [['tea','matcha'],'🍵'],
+  [['egg'],'🥚'], [['shrimp','tempura'],'🍤'], [['fish','salmon','tuna'],'🐟'],
+  [['crab'],'🦀'], [['lobster'],'🦞'], [['squid','calamari'],'🦑'], [['oyster'],'🦪'],
+  [['soup','stew','jjigae','pot'],'🍲'], [['butter'],'🧈'], [['soju','sake'],'🍶'],
+];
+const FOOD_SVG = [
+  [['lychee','litchi','lichee'],'#svg-lychee'],
+];
+function findFoodSVG(name){
+  const n = name.toLowerCase();
+  for(const [keys, ref] of FOOD_SVG){
+    if(keys.some(k=>n.includes(k))) return ref;
+  }
+  return null;
+}
+function findFoodEmoji(name){
+  const typed = name.match(/\p{Extended_Pictographic}/u);   // if they typed an emoji, use it
+  if(typed) return typed[0];
+  const n = name.toLowerCase();
+  for(const [keys, emo] of FOOD_EMOJI){
+    if(keys.some(k=>n.includes(k))) return emo;
+  }
+  return null; // fall back to the generic cute fruit
+}
+
 function spawnFruitRecord(rec, dropIn){
   if(spawnedEls.has(rec.id)) return;
   const c = hashColor(rec.id);
@@ -885,7 +960,13 @@ function spawnFruitRecord(rec, dropIn){
   const el = document.createElement('button');
   el.className = 'fruit';
   el.style.width = el.style.height = (r*2)+'px';
-  el.innerHTML = userFruitSVG(c) + `<span class="tag">${escapeHTML(rec.food)}</span>`;
+  const svgRef = findFoodSVG(rec.food);
+  const emo = svgRef ? null : findFoodEmoji(rec.food);
+  el.innerHTML = (svgRef
+    ? `<svg viewBox="0 0 100 100" aria-hidden="true"><use href="${svgRef}"/></svg>`
+    : emo
+      ? `<span class="emoji-fruit" style="font-size:${Math.round(r*1.5)}px">${emo}</span>`
+      : userFruitSVG(c)) + `<span class="tag">${escapeHTML(rec.food)}</span>`;
   el.setAttribute('aria-label', 'Fruit added by a visitor: '+rec.food);
   el.addEventListener('click', ()=>openUserExp(rec));
   box.appendChild(el);
@@ -993,7 +1074,13 @@ async function deleteUserFruit(id){
 function openUserExp(rec){
   document.getElementById('exp-title').textContent = rec.food;
   document.getElementById('exp-badge').textContent = '🍒 added by a visitor';
-  document.getElementById('exp-fruit').innerHTML = '<use href="#svg-berry"/>';
+  const svgRef = findFoodSVG(rec.food);
+  const emo = svgRef ? null : findFoodEmoji(rec.food);
+  document.getElementById('exp-fruit').innerHTML = svgRef
+    ? `<use href="${svgRef}"/>`
+    : emo
+      ? `<text x="50" y="68" text-anchor="middle" font-size="58">${emo}</text>`
+      : '<use href="#svg-berry"/>';
   document.getElementById('exp-body').innerHTML = (rec.opinion
     ? `<div class="exp-quote">“${escapeHTML(rec.opinion)}”<small>a visitor's experience</small></div>`
     : `<p>This visitor added <strong>${escapeHTML(rec.food)}</strong> as the food that represents their culture.</p>`)
