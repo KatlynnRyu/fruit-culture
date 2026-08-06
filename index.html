@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Mask That Frees — Cultures, Emotion &amp; Performing Arts</title>
+<title>The Mask That Frees · La máscara que libera, Emotion, Culture &amp; the Stage</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -93,6 +93,35 @@ body::before{
   min-height:480px;
 }
 @media(max-width:760px){.home-inner{grid-template-columns:1fr}}
+.home-eyebrow{font-family:var(--display);font-weight:700;font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
+.home-es{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.15rem;color:var(--red);margin-top:10px}
+.es-sub{display:block;font-family:var(--display);font-style:italic;font-weight:500;font-size:.95rem;color:var(--red);margin-top:3px}
+.resumen{background:var(--box);border:2px dashed var(--box-edge);border-radius:14px;padding:18px 22px;margin:18px 0;font-size:.95rem;line-height:1.75}
+.resumen b{font-family:var(--display);color:var(--red)}
+/* codebook accordion */
+.codebook{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.code-item{background:var(--bg);border:2.5px solid var(--ink);border-radius:14px;padding:0 18px}
+.code-item summary{display:flex;justify-content:space-between;align-items:center;gap:12px;cursor:pointer;font-family:var(--display);font-weight:700;font-size:.95rem;padding:13px 0;list-style:none}
+.code-item summary::-webkit-details-marker{display:none}
+.code-item summary b{color:var(--red);font-size:.9rem;flex:none;white-space:nowrap}
+.code-item[open]{background:var(--white)}
+.code-item p{font-size:.9rem;line-height:1.65;color:var(--ink-soft);margin:0 0 13px}
+.code-item .code-quote{font-style:italic;border-left:3px solid var(--gold);padding-left:12px;color:var(--ink)}
+/* coding matrix explorer */
+.matrix-scroll{overflow-x:auto;margin-top:4px}
+table.cmatrix{border-collapse:collapse;font-size:.72rem;min-width:680px;width:100%}
+.cmatrix th,.cmatrix td{border:1px solid #e3dccd;padding:6px 7px;text-align:center;background:#fff;color:#444}
+.cmatrix th{font-weight:700;background:#faf7f0}
+.cmatrix td.stu{font-weight:700;text-align:left;white-space:nowrap}
+.cmatrix tr.ctrl td{background:#fbf5e8}
+.cmatrix .dotx{display:inline-block;width:10px;height:10px;border-radius:50%;background:#4b5fa8}
+.cmatrix tbody tr{cursor:pointer}
+.cmatrix tbody tr:hover td{background:#f1ecdf}
+.cmatrix tbody tr.sel td{background:#ece2c9}
+.matrix-detail{margin-top:14px;background:var(--bg);border:2.5px solid var(--ink);border-radius:14px;padding:16px 18px;font-size:.92rem;line-height:1.7;display:none}
+.matrix-detail.show{display:block}
+.matrix-detail .md-quote{font-style:italic;border-left:3px solid var(--gold);padding-left:12px;margin-top:8px}
+.matrix-legend{font-size:.76rem;color:#666;margin-top:12px;line-height:1.7}
 .home-left h1{
   font-family:var(--display);font-weight:800;
   font-size:clamp(2.4rem,6.5vw,4.4rem);
@@ -406,6 +435,7 @@ footer{
     <button class="navbtn" data-page="home" onclick="go('home')">Homepage</button>
     <button class="navbtn" data-page="play" onclick="go('play')">Interactive</button>
     <button class="navbtn" data-page="findings" onclick="go('findings')">Our Findings</button>
+    <button class="navbtn" data-page="essay" onclick="go('essay')">La Máscara</button>
     <button class="navbtn" data-page="resources" onclick="go('resources')">Resource Page</button>
     <button class="navbtn" data-page="about" onclick="go('about')">About Us</button>
   </nav>
@@ -416,11 +446,13 @@ footer{
   <div class="home-card">
     <div class="home-inner">
       <div class="home-left">
+        <p class="home-eyebrow">simpatía · máscaras · the stage</p>
         <h1>The Mask<br>That <span>Frees</span></h1>
-        <p class="desc">A student research project on how performing arts help adolescents build confidence and express emotion — and how the cultures of <strong>Korea, the United States, and Mexico</strong> each teach a different "script" for showing what we feel.</p>
+        <p class="home-es">la máscara que libera</p>
+        <p class="desc">What can <em>simpatía</em>, the Latin American art of sharing warmth openly, teach us about why some adolescents flourish on stage? A student research project comparing three cultural "scripts" for emotion, <strong>Mexico's warm openness, America's expressivity, Korea's restraint</strong>, and how performing arts help teens live between them.</p>
         <div class="home-fruits" aria-hidden="true">
-          <svg viewBox="0 0 100 100"><use href="#svg-apple"/></svg>
           <svg viewBox="0 0 100 100"><use href="#svg-avocado"/></svg>
+          <svg viewBox="0 0 100 100"><use href="#svg-apple"/></svg>
           <svg viewBox="0 0 100 100"><use href="#svg-pear"/></svg>
         </div>
       </div>
@@ -447,16 +479,16 @@ footer{
   <div class="play-wrap">
     <div class="play-head">
       <h2>Three Cultures, Three Fruits 🍉</h2>
-      <p>Tap a floating fruit to explore how each culture teaches young people to express emotion.</p>
+      <p>Tap a floating fruit to explore each culture's script for emotion, from <em>simpatía</em> to restraint.</p>
     </div>
     <div class="add-fruit">
       <label for="food-name">🍒 add your own! what food represents <em>your</em> culture, and what were you taught about showing emotion?</label>
       <div class="add-row">
         <input id="food-name" class="food" type="text" placeholder="your food (e.g. mango)" maxlength="24">
-        <textarea id="food-opinion" class="opinion" rows="3" placeholder="your opinion / experience — share your story! (up to 600 characters)" maxlength="600"></textarea>
+        <textarea id="food-opinion" class="opinion" rows="3" placeholder="your opinion / experience, share your story! (up to 600 characters)" maxlength="600"></textarea>
         <button onclick="addUserFruit()">add it!</button>
       </div>
-      <p class="add-note" id="add-note">🌍 Your fruit is saved and shared — everyone who visits this page can see it, and anyone can remove fruits (tap a fruit → remove). Please be kind!</p>
+      <p class="add-note" id="add-note">🌍 Your fruit is saved and shared, everyone who visits this page can see it, and anyone can remove fruits (tap a fruit → remove). Please be kind!</p>
     </div>
     <div class="suika-box" id="box" aria-label="Floating fruit playground"></div>
   </div>
@@ -467,13 +499,13 @@ footer{
   <div class="findings-wrap">
     <div class="find-head">
       <h2>Our Findings 🔍</h2>
-      <p>What fifteen adolescents told us about performing, confidence, and culture.</p>
+      <p>What fifteen adolescents told us about culture, confidence, and the stage, beginning with the strongest thread in the data: the cultural script for emotion. Every figure below is drawn from, and checkable against, the full coding matrix published at the bottom of this page.</p>
     </div>
 
     <section class="find-sec">
       <span class="secnum">Graph 2</span>
       <h3>What the Interviews Surfaced</h3>
-      <p>Before diving into individual findings, here's the map of the whole dataset — how often each theme appeared across all 15 participants:</p>
+      <p>Before diving into individual findings, here's the map of the whole dataset, how often each theme appeared across all 15 participants:</p>
       <div class="chart-panel">
         <p class="ctitle">Theme Frequency Across 15 Participants</p>
         <p class="csub">Number of participants (of 15) coded for each theme</p>
@@ -488,29 +520,58 @@ footer{
           <div class="hbar"><span class="hlabel">Group = safety</span><span class="htrack"><span class="hfill" style="width:33%"></span></span><span class="hval">5</span></div>
           <div class="hbar"><span class="hlabel">Culture: open expression</span><span class="htrack"><span class="hfill" style="width:20%"></span></span><span class="hval">3</span></div>
         </div>
-        <p class="chart-caption"><b>Figure 2.</b> Theme frequency across 15 participants, from the study's coding matrix. Cultural pressure (12) and peer comparison (11) dominate — which is why culture and comparison became central threads of this study.</p>
+        <p class="chart-caption"><b>Figure 2.</b> Theme frequency across 15 participants, from the study's coding matrix. Cultural pressure (12) and peer comparison (11) dominate, which is why culture and comparison became central threads of this study.</p>
       </div>
+    </section>
+
+    <section class="find-sec">
+      <span class="secnum">2.5</span>
+      <h3>Cultural Scripts and Adolescent Wellbeing<span class="es-sub">guiones culturales de la emoción</span></h3>
+      <p>Emotional expression is not just personality, it is taught. Hochschild (1979) named the unwritten <strong>"feeling rules"</strong> that govern which emotions we're expected to show, and Röttger-Rössler et&nbsp;al. (2015) showed that communities actively train children in which emotions to express and which to suppress. Our three cultures teach three distinct scripts:</p>
+      <div class="mini-cultures">
+        <div class="mini-culture">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#svg-avocado"/></svg>
+          <h5>Mexico &amp; Latin America</h5>
+          <span class="tagword">warm positivity</span>
+          <p>Collectivistic, but organized around <em>simpatía</em>, warm, open expression of positive emotion and harmony, and <em>familismo</em>, the closeness of family life (Salvador et&nbsp;al., 2020).</p>
+        </div>
+        <div class="mini-culture">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#svg-apple"/></svg>
+          <h5>United States</h5>
+          <span class="tagword">open expression</span>
+          <p>Individualistic cultures endorse greater emotional expressivity, a 32-country survey of 5,000+ people (Matsumoto et&nbsp;al., 2008).</p>
+        </div>
+        <div class="mini-culture">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#svg-pear"/></svg>
+          <h5>Korea</h5>
+          <span class="tagword">restraint</span>
+          <p>Children learn to adjust or suppress emotion by social context, <em>nunchi</em>, <em>chemyon</em>, humility, deflecting compliments.</p>
+        </div>
+      </div>
+      <p>These differences track measurable gaps in how adolescents fare. Mexican adolescents in earlier PISA rounds reported life satisfaction <strong>above the OECD average</strong>, while in PISA 2022 Korean fifteen-year-olds reported <strong>6.36, ranking 66th of 73</strong> countries. Cultural scripts are only one factor among many, but a culture that gives young people a language for what they feel may offer more outlets than one that teaches them to hold it in.</p>
+      <div class="quote">“If you feel like you want to cry, just cry.”<small>Student E · Guatemalan American</small></div>
+      <p>This thread ran clearly through our interviews: twelve of fifteen participants, across Korean, Chinese, Indian, and Russian backgrounds, were coded for cultural pressure toward restraint, while only three, Students E, I, and N, carried an open-expression script. For the restrained majority, performing arts often became the rare sanctioned outlet. Student L named it exactly: "Music became the one socially acceptable channel where I could be loud, dramatic, even sad in public." For students like E, the stage extended a fluency in feeling their culture had already given them.</p>
     </section>
 
     <section class="find-sec">
       <span class="secnum">2.1</span>
       <h3>Performance and Confidence Transfer</h3>
-      <p>Performing arts are widely believed to build confidence that extends beyond the stage. The intuition has a basis in Bandura's concept of <strong>self-efficacy</strong>: succeeding at a scary task under safe conditions strengthens belief in your own abilities — and that belief can travel to other settings.</p>
-      <p>Yet the research record is split. A controlled experiment with 237 elementary students (Freeman, Sullivan &amp; Fulton, 2003) found <strong>no significant effect</strong> of creative drama on self-concept — though the authors admitted their broad scales may have missed real changes the drama instructor saw in shy students. Meanwhile, a study of over 2,000 students (Burton, Horowitz &amp; Abeles, 2000) found arts-rich students consistently <strong>more confident and more willing to take risks</strong> — gains that surfaced most clearly in the qualitative data, not the standardized measures.</p>
-      <p>So the disagreement may be less about <em>whether</em> performing builds confidence than about <em>how confidence is measured</em>. When studies listen to young people directly, the effect becomes visible — and our interviews found the same pattern:</p>
+      <p>Performing arts are widely believed to build confidence that extends beyond the stage. The intuition has a basis in Bandura's concept of <strong>self-efficacy</strong>: succeeding at a scary task under safe conditions strengthens belief in your own abilities, and that belief can travel to other settings.</p>
+      <p>Yet the research record is split. A controlled experiment with 237 elementary students (Freeman, Sullivan &amp; Fulton, 2003) found <strong>no significant effect</strong> of creative drama on self-concept, though the authors admitted their broad scales may have missed real changes the drama instructor saw in shy students. Meanwhile, a study of over 2,000 students (Burton, Horowitz &amp; Abeles, 2000) found arts-rich students consistently <strong>more confident and more willing to take risks</strong>, gains that surfaced most clearly in the qualitative data, not the standardized measures.</p>
+      <p>So the disagreement may be less about <em>whether</em> performing builds confidence than about <em>how confidence is measured</em>. When studies listen to young people directly, the effect becomes visible, and our interviews found the same pattern:</p>
       <div class="chart-panel">
         <p class="ctitle">Confidence Transfers Off the Stage: Performers vs. Non-Performers</p>
         <p class="csub">% of group · coded interview responses</p>
-        <div class="colchart" role="img" aria-label="Performers: 66.7% reported confidence transfer, 33.3% no transfer. Non-performers: 0% transfer, 100% no transfer.">
+        <div class="colchart" role="img" aria-label="Performers: 75% reported confidence transfer, 25% no transfer. Non-performers: 0% transfer, 100% no transfer.">
           <div class="col-group">
             <div class="cols">
-              <div class="colbar perf" style="height:66.7%"><span>66.7%</span></div>
+              <div class="colbar perf" style="height:75%"><span>75%</span></div>
               <div class="colbar nonp" style="height:1.5%"><span>0%</span></div>
             </div>
           </div>
           <div class="col-group">
             <div class="cols">
-              <div class="colbar perf" style="height:33.3%"><span>33.3%</span></div>
+              <div class="colbar perf" style="height:25%"><span>25%</span></div>
               <div class="colbar nonp" style="height:100%"><span>100%</span></div>
             </div>
           </div>
@@ -520,55 +581,28 @@ footer{
           <p>Still anxious when watched / no transfer</p>
         </div>
         <div class="legend">
-          <span><i class="l-perf"></i>Performers (n = 9)</span>
+          <span><i class="l-perf"></i>Performers (n = 12)</span>
           <span><i class="l-nonp"></i>Non-performers (n = 3)</span>
         </div>
-        <p class="chart-caption"><b>Figure 1.</b> Confidence transfer reported by performers versus non-performers, based on coded interview responses. The small comparison group (n = 3) makes this a striking pattern rather than a statistical result.</p>
+        <p class="chart-caption"><b>Figure 1.</b> Nine of twelve performers (75%) were coded for confidence transferring off the stage; none of the three non-performers were. Verified against the full coding matrix. The small comparison group (n = 3) makes this a striking pattern rather than a statistical result.</p>
       </div>
-      <div class="quote">“I never thought I could speak easily in public… I'm sure for myself because I feel accepted.”<small>adolescent in a drama program — Asimidou et al.</small></div>
+      <div class="quote">“I never thought I could speak easily in public… I'm sure for myself because I feel accepted.”<small>adolescent in a drama program, Asimidou et al.</small></div>
     </section>
 
     <section class="find-sec">
       <span class="secnum">2.4</span>
-      <h3>Performing as Becoming Someone Else: The Mask That Frees</h3>
-      <p>Several participants described a paradox: performing <em>as someone else</em> made it easier to be themselves. Goffman (1959) argued that everyday life is already a performance — we present a version of ourselves to an audience and worry whether it will be accepted. If ordinary life is a role, then stepping into an explicit, scripted role on stage may <strong>relieve</strong> that pressure, because the performer is no longer presenting their own self for judgment.</p>
-      <p>Drama therapists observe exactly this: under the cover of "just acting," the character becomes a shield — protection rather than disguise. Within that safe distance, adolescents can take emotional risks without feeling that <em>they</em> are being evaluated.</p>
-      <div class="quote">On stage you're “someone else, not necessarily yourself” — the character creates distance from the part of you that fears being watched.<small>Student E</small></div>
-      <div class="quote">Theater as a way to express emotions she normally could not access — the character as a vehicle for feelings she would otherwise hold back.<small>Student J</small></div>
-      <p>For both students, the role was not a mask that hid them but one that freed them. The character becomes a kind of <strong>permission slip</strong> — a way to feel and show what the unprotected self cannot. And for a young person taught to suppress emotion, a character may offer the rare cover under which those emotions can finally be expressed.</p>
+      <h3>Performing as Becoming Someone Else: The Mask That Frees<span class="es-sub">las dos máscaras</span></h3>
+      <p>Several participants described a paradox: performing <em>as someone else</em> made it easier to be themselves. Goffman (1959) argued that everyday life is already a performance, we present a version of ourselves to an audience and worry whether it will be accepted. If ordinary life is a role, then stepping into an explicit, scripted role on stage may <strong>relieve</strong> that pressure, because the performer is no longer presenting their own self for judgment.</p>
+      <p>Drama therapists observe exactly this: under the cover of "just acting," the character becomes a shield, protection rather than disguise. Within that safe distance, adolescents can take emotional risks without feeling that <em>they</em> are being evaluated.</p>
+      <p>The mask has a special place in Hispanic letters. In <em>El laberinto de la soledad</em> (1950), Octavio Paz described the Mexican self as sheltered behind masks, the face a mask, the smile a mask, a hermeticism worn in self-defense. The adolescents in this study reveal the mask's other life: put on by choice, on a stage, it stops defending the self and starts releasing it. Between Paz's mask that hides and the theater's mask that frees runs the question at the heart of this project.</p>
+      <div class="quote">“It allows you to be on stage as someone else and not necessarily as yourself, which can be alleviation from overall judgement on yourself.”<small>Student E · theater, verbatim</small></div>
+      <div class="quote">Theater as a way to express emotions she normally could not access, the character as a vehicle for feelings she would otherwise hold back.<small>Student J</small></div>
+      <p>For both students, the role was not a mask that hid them but one that freed them. The character becomes a kind of <strong>permission slip</strong>, a way to feel and show what the unprotected self cannot. And for a young person taught to suppress emotion, a character may offer the rare cover under which those emotions can finally be expressed.</p>
     </section>
 
-    <section class="find-sec">
-      <span class="secnum">2.5</span>
-      <h3>Cultural Scripts and Adolescent Wellbeing</h3>
-      <p>Emotional expression is not just personality — it is taught. Hochschild (1979) named the unwritten <strong>"feeling rules"</strong> that govern which emotions we're expected to show, and Röttger-Rössler et&nbsp;al. (2015) showed that communities actively train children in which emotions to express and which to suppress. Our three cultures teach three distinct scripts:</p>
-      <div class="mini-cultures">
-        <div class="mini-culture">
-          <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#svg-pear"/></svg>
-          <h5>Korea</h5>
-          <span class="tagword">restraint</span>
-          <p>Children learn to adjust or suppress emotion by social context — <em>nunchi</em>, <em>chemyon</em>, humility, deflecting compliments.</p>
-        </div>
-        <div class="mini-culture">
-          <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#svg-apple"/></svg>
-          <h5>United States</h5>
-          <span class="tagword">open expression</span>
-          <p>Individualistic cultures endorse greater emotional expressivity — a 32-country survey of 5,000+ people (Matsumoto et&nbsp;al., 2008).</p>
-        </div>
-        <div class="mini-culture">
-          <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#svg-avocado"/></svg>
-          <h5>Mexico</h5>
-          <span class="tagword">warm positivity</span>
-          <p>Collectivistic, but organized around <em>simpatía</em>: warm, open expression of positive emotion and harmony (Salvador et&nbsp;al., 2020).</p>
-        </div>
-      </div>
-      <p>These differences track measurable gaps in how adolescents fare. In PISA 2022, Korean fifteen-year-olds reported life satisfaction of <strong>6.36 — ranking 66th of 73</strong> countries, while Mexican adolescents in earlier rounds scored <strong>above the OECD average</strong>. Cultural scripts are only one factor among many, but a culture that teaches young people to suppress what they feel may offer fewer outlets than one that encourages open expression.</p>
-      <div class="quote">“If you want to cry, just cry.”<small>participant raised in a Latin American context</small></div>
-      <p>This thread ran clearly through our interviews: participants from Korean and Chinese backgrounds described being taught to stay humble and avoid attention, while performing arts often became the rare space where that restraint could be set aside.</p>
-    </section>
 
     <section class="find-sec">
-      <span class="secnum">Graphs 4–5</span>
+      <span class="secnum">Graphs 4-5</span>
       <h3>More Patterns from the Interviews</h3>
       <div class="graph-pair">
         <div class="chart-panel">
@@ -581,14 +615,14 @@ footer{
           <p class="chart-caption"><b>Figure 3.</b> The data behind this study's central program-design principle: start people in groups, not solos. As Student L put it, solo too early can break someone.</p>
         </div>
         <div class="chart-panel">
-          <p class="ctitle">The Body Reframed — and Where It Isn't</p>
+          <p class="ctitle">The Body Reframed, and Where It Isn't</p>
           <p class="csub">Number of participants</p>
           <div class="hchart" role="img" aria-label="Body as expressive tool: 7; still felt judged: 7; both at once: 3">
             <div class="hbar"><span class="hlabel">Reframed body as expressive tool</span><span class="htrack"><span class="hfill" style="width:100%"></span></span><span class="hval">7</span></div>
             <div class="hbar"><span class="hlabel">Still felt body was judged</span><span class="htrack"><span class="hfill" style="width:100%"></span></span><span class="hval">7</span></div>
             <div class="hbar"><span class="hlabel">Reported both (tension within)</span><span class="htrack"><span class="hfill" style="width:43%"></span></span><span class="hval">3</span></div>
           </div>
-          <p class="chart-caption"><b>Figure 4.</b> Reframing the body as an instrument and still feeling judged are equally common, and three students report both at once — a tension more interesting than a clean win.</p>
+          <p class="chart-caption"><b>Figure 4.</b> Reframing the body as an instrument and still feeling judged are equally common, and three students report both at once, a tension more interesting than a clean win.</p>
         </div>
       </div>
     </section>
@@ -598,46 +632,51 @@ footer{
       <h3>Quote Bank: In Their Own Words</h3>
       <p>Representative quotes collected from our fifteen interviews, preserved alongside the coding matrix:</p>
       <div class="quote-grid">
-        <div class="qcard">
-          <span class="qtheme">role distance</span>
-          On stage you're “someone else, not necessarily yourself” — a release from judgment.
-          <small>Student E</small>
-        </div>
-        <div class="qcard">
-          <span class="qtheme">emotional access</span>
-          Theater as a way to express emotions she normally could not access — the character as a vehicle for feelings she would otherwise hold back.
-          <small>Student J</small>
-        </div>
-        <div class="qcard">
-          <span class="qtheme">cultural openness</span>
-          “If you want to cry, just cry.”
-          <small>Participant · Latin American background</small>
-        </div>
-        <div class="qcard">
-          <span class="qtheme">cultural restraint</span>
-          Taught to stay humble, “deny compliments,” and avoid drawing attention to themselves.
-          <small>Participants · Korean &amp; Chinese backgrounds</small>
-        </div>
-        <div class="qcard">
-          <span class="qtheme">group first</span>
-          “Start in a group… solo too early can break someone.”
-          <small>Student L</small>
-        </div>
-        <div class="qcard">
-          <span class="qtheme">comparison reframed</span>
-          “Comparison became information instead of verdict.”
-          <small>Student L</small>
-        </div>
-        <div class="qcard">
-          <span class="qtheme">body as judged</span>
-          “Too skinny to project power.”
-          <small>Student C</small>
-        </div>
-        <div class="qcard">
-          <span class="qtheme">body as tool</span>
-          “My body is my instrument.”
-          <small>Students B &amp; L</small>
-        </div>
+        <div class="qcard"><span class="qtheme">stage as relief</span>"It allows you to be on stage as someone else and not necessarily as yourself, which can be alleviation from overall judgement on yourself."<small>Student E · theater</small></div>
+        <div class="qcard"><span class="qtheme">cultural openness</span>"If you feel like you want to cry, just cry."<small>Student E · Guatemalan American</small></div>
+        <div class="qcard"><span class="qtheme">cultural restraint</span>"In Asian cultures you have to reserve your accomplishments and joys to humble yourself and deny the compliments."<small>Student C · Korean</small></div>
+        <div class="qcard"><span class="qtheme">cultural restraint</span>"I've always been told to man up and I'm not allowed to cry."<small>Student D · Chinese</small></div>
+        <div class="qcard"><span class="qtheme">the sanctioned channel</span>"Music became the one socially acceptable channel where I could be loud, dramatic, even sad in public."<small>Student L · Chinese American</small></div>
+        <div class="qcard"><span class="qtheme">group first</span>"Group performance lets you borrow courage until you grow your own."<small>Student L</small></div>
+        <div class="qcard"><span class="qtheme">comparison reframed</span>"Comparison became information instead of verdict."<small>Student L</small></div>
+        <div class="qcard"><span class="qtheme">nerves reinterpreted</span>"At fifteen, nerves meant something was wrong. Now nerves mean I care. Same heartbeat, different interpretation."<small>Student L</small></div>
+        <div class="qcard"><span class="qtheme">body as tool</span>"Before, it was just my body. But now, it's like my body is my instrument, my tool for making music."<small>Student B · choir</small></div>
+        <div class="qcard"><span class="qtheme">body as judged</span>"Because I'm skinny I don't have the power to project... when I play violin compared to other people."<small>Student C · violin</small></div>
+        <div class="qcard"><span class="qtheme">confidence transfer</span>"I don't really fear presentations because I don't feel uncomfortable in front of a large group of people."<small>Student A · theater and harp</small></div>
+        <div class="qcard"><span class="qtheme">counter-evidence</span>"Performing arts is the worst way to improve your self-confidence... performing is vulnerable and I would just not recommend it."<small>Student D · theater</small></div>
+        <div class="qcard"><span class="qtheme">control contrast</span>"I overthink what other people think about me, especially when speaking in front of a group."<small>Student G · control, no performance experience</small></div>
+        <div class="qcard"><span class="qtheme">what performers still need</span>"The mental stress of the theater process... there's no set ways to help you not feel that way."<small>Student E</small></div>
+      </div>
+      </section>
+
+    <section class="find-sec">
+      <span class="secnum">📖</span>
+      <h3>The Codebook: How We Read the Interviews<span class="es-sub">el libro de códigos</span></h3>
+      <p>Qualitative research is only as trustworthy as its coding. This codebook publishes every theme used in the analysis: what it means, how many of the fifteen participants expressed it, and a representative voice where one appears in the quote bank. Tap a theme to open it.</p>
+      <div class="codebook">
+        <details class="code-item"><summary><span>Cultural pressure / restraint</span><b>12 of 15</b></summary><p><strong>Definition:</strong> culture demands humility, restraint, or standards: "can't take compliments," "man up," "be humble, don't draw attention."</p><p class="code-quote">"In Asian cultures you have to reserve your accomplishments and joys to humble yourself and deny the compliments." (Student C, Korean)</p></details>
+        <details class="code-item"><summary><span>Comparison to peers</span><b>11 of 15</b></summary><p><strong>Definition:</strong> compares self to other performers, in ability or looks, whether the comparison felt threatening, motivating, or both.</p><p class="code-quote">"Comparison became information instead of verdict." (Student L)</p></details>
+        <details class="code-item"><summary><span>Confidence transfer (stage to life)</span><b>9 of 15</b></summary><p><strong>Definition:</strong> stage confidence carries into presentations and social life: "I don't fear presentations anymore," "I can start conversations now."</p><p class="code-quote">"Class presentations used to be my absolute worst nightmare... now I can get up there and talk without completely freezing up." (Student B)</p></details>
+        <details class="code-item"><summary><span>No regrets</span><b>8 of 15</b></summary><p><strong>Definition:</strong> believes their performing arts experience made them better and is part of their identity today.</p><p class="code-quote">"If I had never started singing, I honestly think I'd still be that quiet kid who avoids eye contact." (Student B)</p></details>
+        <details class="code-item"><summary><span>Body as tool for expression</span><b>7 of 15</b></summary><p><strong>Definition:</strong> reframes the body as an instrument or means of expression: "I focus on expressing, not how I look."</p><p class="code-quote">"Before, it was just my body. But now, it's like my body is my instrument, my tool for making music." (Student B)</p></details>
+        <details class="code-item"><summary><span>Body as judged / insecurity</span><b>7 of 15</b></summary><p><strong>Definition:</strong> feels evaluated; body-related insecurity persists despite, or within, performance.</p><p class="code-quote">"Because I'm skinny I don't have the power to project... when I play violin compared to other people." (Student C)</p></details>
+        <details class="code-item"><summary><span>Solo as vulnerability</span><b>6 of 15</b></summary><p><strong>Definition:</strong> solo performance or failure feels identity-threatening; solo standards pressure.</p><p class="code-quote">"Solo recitals are exposure, your sound and nothing else." (Student L)</p></details>
+        <details class="code-item"><summary><span>Group as safety</span><b>5 of 15</b></summary><p><strong>Definition:</strong> group performance feels safer than solo: "trusted my group, we were all in it together."</p><p class="code-quote">"Group performance lets you borrow courage until you grow your own." (Student L)</p></details>
+        <details class="code-item"><summary><span>Culture: open expression</span><b>3 of 15</b></summary><p><strong>Definition:</strong> culture encourages emotional expression: family gatherings full of laughter, feelings named out loud.</p><p class="code-quote">"If you feel like you want to cry, just cry." (Student E, Guatemalan American)</p></details>
+        <details class="code-item"><summary><span>Counter-evidence (arts without confidence)</span><b>2 of 15</b></summary><p><strong>Definition:</strong> pushes back on the study's hypothesis; performing did not build confidence, or hurt it.</p><p class="code-quote">"Performing arts is the worst way to improve your self-confidence... performing is vulnerable." (Student D)</p></details>
+        <details class="code-item"><summary><span>Social media body pressure</span><b>2 of 15</b></summary><p><strong>Definition:</strong> body image shaped by social media rather than by performance itself. Coded only among control-group participants.</p></details>
+      </div>
+      <p style="margin-top:14px;font-size:.85rem;color:var(--ink-soft)">Definitions are quoted from the study's tag definition sheet; every count was verified directly against the full coding matrix, published below.</p>
+    </section>
+
+    <section class="find-sec">
+      <span class="secnum">🔬</span>
+      <h3>Explore the Data: The Full Coding Matrix<span class="es-sub">los datos completos</span></h3>
+      <p>Nothing on this page is summarized beyond checking: here is the study's complete coding matrix, all fifteen participants against all eleven themes. Tap any row to read that participant's profile and key quote. Control-group rows are shaded.</p>
+      <div class="chart-panel">
+        <div class="matrix-scroll"><table class="cmatrix" id="cmatrix"></table></div>
+        <div class="matrix-detail" id="matrix-detail"></div>
+        <p class="matrix-legend" id="matrix-legend"></p>
       </div>
     </section>
 
@@ -645,14 +684,51 @@ footer{
       <span class="secnum">3</span>
       <h3>How We Did It (Methods)</h3>
       <div class="methods">
-        <div><h5>Design</h5><p>Qualitative — semi-structured interviews with thematic analysis, chosen because standardized scales have missed changes performers describe in their own words.</p></div>
-        <div><h5>Participants</h5><p>15 adolescents &amp; young adults: 12 performers (theater, dance, music, voice) + 3 non-performers. Korean, Chinese, American, Indian American, and Latin American backgrounds.</p></div>
+        <div><h5>Design</h5><p>Qualitative, semi-structured interviews with thematic analysis, chosen because standardized scales have missed changes performers describe in their own words.</p></div>
+        <div><h5>Participants</h5><p>15 adolescents and young adults: 12 performers spanning theater, choir, dance, violin, trombone, harp, piano, clarinet, and gymnastics, plus 3 non-performer controls. Backgrounds: Korean, Korean American, Chinese, Chinese American, Indian American, Russian American, Guatemalan American, and American.</p></div>
         <div><h5>Interviews</h5><p>Four parts: performance history · confidence &amp; its transfer · body and self-perception · cultural and family messages about emotion.</p></div>
-        <div><h5>Analysis</h5><p>Thematic coding matrix (confidence transfer, body as tool vs. judged object, cultural restraint, role distance) plus a quote bank of representative statements.</p></div>
-        <div><h5>Ethics</h5><p>Informed consent for all participants; minors protected with pseudonyms (Student A–O). Real names appear nowhere in the analysis.</p></div>
-        <div><h5>Limitations</h5><p>Small convenience sample and a tiny comparison group — patterns are suggestive, not statistical. All data self-reported.</p></div>
+        <div><h5>Analysis</h5><p>Thematic coding matrix (confidence transfer, body as tool vs. judged object, cultural restraint, role distance) plus a quote bank of representative statements. The full codebook is published above.</p></div>
+        <div><h5>Ethics</h5><p>Informed consent for all participants; minors protected with pseudonyms (Student A-O). Real names appear nowhere in the analysis.</p></div>
+        <div><h5>Limitations</h5><p>Small convenience sample and a tiny comparison group, patterns are suggestive, not statistical. All data self-reported.</p></div>
       </div>
     </section>
+
+    <section class="find-sec">
+      <span class="secnum">4</span>
+      <h3>Conclusion: From Findings to a Proposal<span class="es-sub">de los hallazgos a una propuesta</span></h3>
+      <p>Research that ends at description leaves its best question unasked: what should anyone <em>do</em>? Student E named the gap directly: "The mental stress of the theater process... there's no set ways to help you not feel that way." Taken together, these findings sketch the shape of a performing-arts program for adolescents raised under scripts of restraint, built on three principles the data kept repeating:</p>
+      <div class="methods">
+        <div><h5>1 · Start in groups, never solos</h5><p>Group performance felt safe; solo felt exposing (Figure 3). "Group performance lets you borrow courage until you grow your own" (Student L). Build confidence in ensemble before it is ever tested alone; as L warned, solo too early can break someone.</p></div>
+        <div><h5>2 · Lead with character</h5><p>The role is the entry point, not the obstacle. Hand a self-conscious adolescent a character and you hand them Paz's mask turned inside out, cover under which expression finally becomes possible.</p></div>
+        <div><h5>3 · Treat the cultural script as material</h5><p>Restraint and <em>simpatía</em> are not problems to fix but scripts to perform. Let students stage their own feeling rules, and try on someone else's.</p></div>
+      </div>
+      <p style="margin-top:18px">And the questions this project opens are the ones I most want to keep asking: How do bilingual adolescents switch emotional scripts along with languages? Does <em>simpatía</em> survive migration, or does it thin in translation? And what can the tradition of Chicano theater, Luis Valdez's El Teatro Campesino, born among striking farmworkers in 1965, with its masks and stock characters, teach about performance as a community's way of feeling out loud? Those questions are where this project ends, and where I hope my study of Hispanic literatures and cultures begins.</p>
+      <div style="margin-top:18px"><button class="bigbtn" onclick="go('essay')">read the essay: La Máscara ✍️</button></div>
+    </section>
+  </div>
+</main>
+
+
+<!-- ================= ESSAY: LA MASCARA ================= -->
+<main id="page-essay" class="page">
+  <div class="simple-page">
+    <div class="panel">
+      <h2>La Máscara: Reading Octavio Paz on a High School Stage<span class="es-sub">un ensayo</span></h2>
+      <p><em>Un ensayo que conecta los hallazgos de este estudio con la tradición literaria hispana que le dio al proyecto su imagen central. English version below.</em></p>
+      <h3>En español</h3>
+      <p>En "Máscaras mexicanas", el segundo ensayo de <em>El laberinto de la soledad</em> (1950), Octavio Paz describe un “yo” que sobrevive ocultándose. El mexicano, escribe, se encierra para preservarse: "máscara el rostro y máscara la sonrisa". Para Paz, esa reserva no es un rasgo de personalidad sino una herencia histórica, una defensa aprendida a lo largo de siglos de conquista y precariedad. Abrirse es exponerse a la herida. La máscara, en su lectura, es armadura.</p>
+      <p>Pero la psicología del mundo hispanohablante cuenta una segunda historia. La investigación sobre la <em>simpatía</em> describe en las culturas mexicana y latinoamericana un guión de expresión cálida y abierta, organizado en torno a compartir generosamente la emoción positiva, y los adolescentes mexicanos han reportado una satisfacción de vida superior al promedio internacional. ¿Cómo puede la cultura de la máscara ser también la cultura de la <em>simpatía</em>? Creo que no son una contradicción sino una coreografía. La <em>simpatía</em> gobierna la superficie social compartida: la calidez se ofrece hacia afuera, por diseño. La máscara protege lo interior y lo no resuelto. La emoción, en las culturas hispanas, no es simplemente "abierta". Está compuesta, puesta en escena, dotada de forma. Esa es una idea teatral, y por eso alguien que estudia teatro termina necesitando a Paz.</p>
+      <p>Mi propia investigación encontró que la máscara hace trabajos opuestos según el guión que cada persona carga. Los participantes criados bajo guiones de contención describieron el escenario como liberación: interpretar a otro les dio permiso para sentir en público por primera vez. Un participante criado en un hogar guatemalteco de expresión abierta describió lo contrario: el escenario no lo liberó de su cultura, extendió una fluidez que su cultura ya le había dado. Paz escribió la máscara que oculta. Mis participantes encontraban, una y otra vez, la máscara que liberaba. Ambas son ciertas, porque el significado de una máscara depende de quién la elige. Impuesta, encierra. Elegida, libera.</p>
+      <p>La historia del teatro hispano lo supo antes que la psicología. En 1965, sobre camiones de plataforma junto a la huelga de la uva en Delano, El Teatro Campesino de Luis Valdez convirtió las máscaras en palabra colectiva. En actos como <em>Las dos caras del patroncito</em>, un campesino y su patrón intercambian máscaras y, por unos minutos, vidas. Trabajadores que no podían decir sin riesgo lo que sentían podían ponerlo en escena, reírse de ello y sostenerse juntos dentro de él. La máscara elegida se volvió la manera en que una comunidad siente en voz alta.</p>
+      <p>Esta es la conversación dentro de la cual quiero pasar los próximos cuatro años: Paz y Valdez, la <em>simpatía</em> y el hermetismo, la literatura de una lengua que lleva cinco siglos pensando qué muestra un rostro y qué resguarda. Mi proyecto me enseñó la pregunta. Las literaturas y culturas hispánicas, leídas en mi lengua materna, son donde espero aprender sus respuestas.</p>
+      <h3>English version</h3>
+      <p>In "Máscaras mexicanas," the second essay of <em>El laberinto de la soledad</em> (1950), Octavio Paz describes a self that survives by concealment. The Mexican, he writes, closes himself off to preserve himself: "máscara el rostro y máscara la sonrisa." For Paz this guardedness is not a personality trait but a historical inheritance, a defense learned through centuries of conquest and precarity. To open yourself is to be wounded. The mask, in his account, is armor.</p>
+      <p>Yet the psychology of the Spanish-speaking world tells a second story. Research on <em>simpatía</em> describes in Mexican and Latin American cultures a script of warm, open expression, organized around the generous sharing of positive emotion, and Mexican adolescents have reported life satisfaction above the international average. How can the culture of the mask also be the culture of <em>simpatía</em>? I think the two are not a contradiction but a choreography. <em>Simpatía</em> governs the shared social surface: warmth is offered outward, by design. The mask guards what is interior and unresolved. Emotion in Hispanic cultures is not simply "open." It is composed, staged, given form. That is a theatrical idea, and it is why a student of performance ends up needing Paz.</p>
+      <p>My own research found the mask doing opposite work depending on the script a person carries. Participants raised under scripts of restraint described the stage as release: playing someone else gave them cover to feel in public for the first time. A participant raised in a Guatemalan household of open expression described the reverse: the stage did not free him from his culture, it extended a fluency his culture had already given him. Paz wrote the mask that hides. My participants kept finding the mask that frees. Both are true, because a mask's meaning depends on who chooses it. Imposed, it imprisons. Chosen, it liberates.</p>
+      <p>Hispanic performance history knew this before psychology did. In 1965, on flatbed trucks beside the Delano grape strike, Luis Valdez's El Teatro Campesino turned masks into collective speech. In actos like <em>Las dos caras del patroncito</em>, a farmworker and his boss trade masks and, for a few minutes, lives. Workers who could not safely say what they felt could stage it, laugh at it, and stand together inside it. The chosen mask became a way for a community to feel out loud.</p>
+      <p>This is the conversation I want to spend the next four years inside: Paz and Valdez, <em>simpatía</em> and hermetismo, the literature of a language that has spent five centuries thinking about what a face shows and what it shelters. My project taught me the question. Hispanic literatures and cultures, read in Spanish, my native language, is where I hope to learn its answers.</p>
+      <p style="text-align:right"><em>Si Ah Jang</em></p>
+    </div>
   </div>
 </main>
 
@@ -663,14 +739,15 @@ footer{
       <h2>Resource Page 📚</h2>
       <p>Key sources behind this study's literature review:</p>
       <ul>
-        <li>Hochschild (1979) — <em>Emotion Work, Feeling Rules, and Social Structure</em>. Origin of the "feeling rules" concept: cultures dictate which emotions to show or suppress.</li>
-        <li>Goffman (1959) — <em>The Presentation of Self in Everyday Life</em>. Everyday life as performance; the role as relief from self-presentation.</li>
-        <li>Freeman, Sullivan &amp; Fulton (2003) — Controlled experiment (n=237) finding no significant effect of creative drama on self-concept, but noting scales may have missed real change.</li>
-        <li>Burton, Horowitz &amp; Abeles (2000) — Study of 2,000+ students: rich arts experience linked to confidence and risk-taking, clearest in qualitative data.</li>
-        <li>Matsumoto, Yoo &amp; Fontaine (2008) — 32-country survey (5,000+ people): individualistic cultures endorse greater emotional expressivity.</li>
-        <li>Röttger-Rössler et&nbsp;al. (2015) — Cross-cultural childrearing: communities actively teach which emotions to express or suppress.</li>
-        <li>Salvador et&nbsp;al. (2020) — Simpatía: warm, open expression of positive emotion in Latin American culture.</li>
-        <li>OECD PISA (2022) — Korean fifteen-year-olds' life satisfaction: 6.36, ranking 66th of 73; Mexican adolescents above the OECD average in earlier rounds.</li>
+        <li>Paz (1950), <em>El laberinto de la soledad</em>, "Máscaras mexicanas": the mask worn in self-defense in Mexican life, the literary counterpoint to this study's mask that frees.</li>
+        <li>Hochschild (1979), <em>Emotion Work, Feeling Rules, and Social Structure</em>. Origin of the "feeling rules" concept: cultures dictate which emotions to show or suppress.</li>
+        <li>Goffman (1959), <em>The Presentation of Self in Everyday Life</em>. Everyday life as performance; the role as relief from self-presentation.</li>
+        <li>Freeman, Sullivan &amp; Fulton (2003), Controlled experiment (n=237) finding no significant effect of creative drama on self-concept, but noting scales may have missed real change.</li>
+        <li>Burton, Horowitz &amp; Abeles (2000), Study of 2,000+ students: rich arts experience linked to confidence and risk-taking, clearest in qualitative data.</li>
+        <li>Matsumoto, Yoo &amp; Fontaine (2008), 32-country survey (5,000+ people): individualistic cultures endorse greater emotional expressivity.</li>
+        <li>Röttger-Rössler et&nbsp;al. (2015), Cross-cultural childrearing: communities actively teach which emotions to express or suppress.</li>
+        <li>Salvador et&nbsp;al. (2020), Simpatía: warm, open expression of positive emotion in Latin American culture.</li>
+        <li>OECD PISA (2022), Korean fifteen-year-olds' life satisfaction: 6.36, ranking 66th of 73; Mexican adolescents above the OECD average in earlier rounds.</li>
       </ul>
     </div>
   </div>
@@ -681,13 +758,19 @@ footer{
   <div class="simple-page">
     <div class="panel">
       <h2>About Us 🎭</h2>
-      <p>This website presents a qualitative research study on performing arts and adolescent development. Fifteen adolescents and young adults were interviewed — twelve performers in theater, dance, instrumental music, and vocal performance, plus three non-performers as a comparison group.</p>
+      <p>This website presents a qualitative research study on performing arts and adolescent development. Fifteen adolescents and young adults were interviewed, twelve performers in theater, dance, instrumental music, and vocal performance, plus three non-performers as a comparison group.</p>
+      <div class="resumen"><b>Resumen en español</b>: Este proyecto examina cómo las artes escénicas ayudan a los adolescentes a ganar confianza y expresar sus emociones. A través de quince entrevistas, comparamos tres "guiones" culturales para la emoción: la calidez abierta de la <em>simpatía</em> latinoamericana, la expresividad individualista de los Estados Unidos y la contención de Corea. El escenario ofrece algo distinto a cada grupo: para quienes crecieron con guiones de contención, una máscara que libera; para quienes crecieron con <em>simpatía</em>, una extensión natural de lo que su cultura ya les enseñó a sentir.</div>
       <h3>What we asked</h3>
       <p>Semi-structured interviews covered four areas: participants' history with performance; whether confidence developed on stage carried into everyday life; how performing shaped body image and self-perception; and what messages participants' cultures and families gave them about expressing emotion.</p>
       <h3>What we found</h3>
-      <p>Six of nine performers described confidence that transferred into presentations and social life — none of the three non-performers did. Many described a paradox: performing <em>as someone else</em> made it easier to be themselves. And a cultural thread ran through it all: participants raised with emotional restraint often found in performance a rare space where those feelings could finally be expressed.</p>
+      <p>Six of nine performers described confidence that transferred into presentations and social life, none of the three non-performers did. Many described a paradox: performing <em>as someone else</em> made it easier to be themselves. And a cultural thread ran through it all: participants raised with emotional restraint often found in performance a rare space where those feelings could finally be expressed.</p>
+      <h3>Why these cultures</h3>
+      <p>This project grew out of a particular interest in Hispanic literatures and cultures, in how Latin American values like <em>simpatía</em> and <em>familismo</em> create a shared language for emotion, set alongside the scripts of restraint that many participants described. Performance became the lens for asking what happens when those different scripts meet a stage.</p>
+      <p>That interest is ultimately literary as much as psychological: Spanish names emotional experiences, <em>simpatía</em>, <em>cariño</em>, <em>confianza</em>, that other languages leave unnamed, and the cultures that speak it build daily life around those words. Octavio Paz's "Máscaras mexicanas", the mask worn in self-defense, gave this project its central image turned inside out: here, the mask frees. Reading Hispanic cultures closely, through their language, their literature, and their stages, is the work this project hopes to continue.</p>
       <h3>A note on the sample</h3>
-      <p>This was a small convenience sample, so the patterns here are suggestive, not statistical. All participants are identified by pseudonyms (Student A–O) to protect their privacy.</p>
+      <p>This was a small convenience sample, so the patterns here are suggestive, not statistical. All participants are identified by pseudonyms (Student A-O) to protect their privacy.</p>
+      <h3>From the researcher</h3>
+      <p>I came to this project as a performer first. Performing arts changed how I interact socially, they eased my shyness and made presentations and conversations far less intimidating, and I wanted to know whether that change was real, whether others felt it, and how much of it culture writes for us. Fifteen conversations later, my answer: it is real, it is shared, and the shape a culture gives it is the most interesting part. Spanish is my native language; part of this project was turning the culture I feel at home in into a question I could study. <em>Si Ah Jang</em></p>
     </div>
   </div>
 </main>
@@ -714,7 +797,7 @@ footer{
         <button onclick="addResponse()">share</button>
       </div>
       <div class="responses" id="responses"></div>
-      <p class="prompt-note">Responses stay on this page only — nothing is uploaded or saved.</p>
+      <p class="prompt-note">Responses stay on this page only, nothing is uploaded or saved.</p>
     </div>
   </div>
 </div>
@@ -820,25 +903,26 @@ const CULTURES = {
     title:'United States', badge:'🍎 the apple (or orange!)', svg:'#svg-apple',
     body:`
       <p><strong>Script: open expression.</strong> Surveying over 5,000 people across 32 countries, Matsumoto, Yoo &amp; Fontaine (2008) found that individualistic cultures like the U.S. endorse greater overall emotional expressivity than collectivistic ones. Showing what you feel is treated as honest, healthy, and even expected.</p>
-      <div class="exp-quote">“She looks someone in the eye.”<small>a drama teacher describing a once-timid student — Burton et al. (2000)</small></div>
+      <div class="exp-quote">“She looks someone in the eye.”<small>a drama teacher describing a once-timid student, Burton et al. (2000)</small></div>
       <p>In American arts education, that expressivity has room to grow: students with rich arts experience were consistently more confident and more willing to take risks than peers with little arts exposure.</p>
-      <p class="exp-fact">🍎 Apples and oranges: everyday, individual fruits — one per person, each on its own. A fitting emblem for a culture where the individual self is expected to speak up.</p>`
+      <p class="exp-fact">🍎 Apples and oranges: everyday, individual fruits, one per person, each on its own. A fitting emblem for a culture where the individual self is expected to speak up.</p>`
   },
   mx:{
     title:'Mexico', badge:'🥑 the avocado', svg:'#svg-avocado',
     body:`
-      <p><strong>Script: warm positivity.</strong> Mexican and Latin American culture is also collectivistic — but it's organized around <em>simpatía</em>, a value that encourages the warm, open expression of positive emotion, politeness, and interpersonal harmony (Salvador et&nbsp;al., 2020).</p>
-      <div class="exp-quote">“If you want to cry, just cry.”<small>a study participant raised in a Latin American context</small></div>
-      <p>The pattern shows up in wellbeing data too: Mexican adolescents in earlier PISA rounds reported life satisfaction <strong>above the OECD average</strong> — a striking contrast with Korea.</p>
-      <p class="exp-fact">🥑 The avocado: soft and green on the inside, generous, made for sharing — like <em>simpatía</em> itself, warmth offered openly to others.</p>`
+      <p><strong>Script: warm positivity.</strong> Mexican and Latin American culture is also collectivistic, but it's organized around <em>simpatía</em>, a value that encourages the warm, open expression of positive emotion, politeness, and interpersonal harmony (Salvador et&nbsp;al., 2020). Alongside it runs <em>familismo</em>, the deep loyalty and closeness of family life, so expressing what you feel is not just permitted, it's part of how people stay connected.</p>
+      <p>Spanish itself carries this script in its vocabulary of closeness, <em>simpatía</em>, <em>cariño</em>, <em>confianza</em>, words that make warmth speakable.</p>
+      <div class="exp-quote">“If you feel like you want to cry, just cry.”<small>Student E · a study participant raised Guatemalan American</small></div>
+      <p>The pattern shows up in wellbeing data too: Mexican adolescents in earlier PISA rounds reported life satisfaction <strong>above the OECD average</strong>, a striking contrast with Korea.</p>
+      <p class="exp-fact">🥑 The avocado: soft and green on the inside, generous, made for sharing, like <em>simpatía</em> itself, warmth offered openly to others.</p>`
   },
   kr:{
     title:'Korea', badge:'🍐 the Korean pear (bae)', svg:'#svg-pear',
     body:`
       <p><strong>Script: restraint.</strong> Research on East Asian socialization finds that Korean parents emphasize emotional restraint and shame more than European American parents, and children display less overt sadness and excitement as a result. Concepts like <em>nunchi</em> (sensitivity to others) and <em>chemyon</em> (social face) teach children to adjust or suppress emotion by social context.</p>
       <div class="exp-quote">Participants from Korean and Chinese backgrounds described being taught to stay humble, deny compliments, and avoid drawing attention to themselves.<small>from this study's interviews</small></div>
-      <p>The stakes are visible in the data: in PISA 2022, Korean fifteen-year-olds reported life satisfaction of <strong>6.36 — ranking 66th of 73</strong> participating countries. For many of this study's Korean-background participants, performing arts became the rare space where restraint could be set aside.</p>
-      <p class="exp-fact">🍐 The Korean pear (bae): round and golden, its sweetness hidden under a firm, quiet skin — gentle inside, reserved outside.</p>`
+      <p>The stakes are visible in the data: in PISA 2022, Korean fifteen-year-olds reported life satisfaction of <strong>6.36, ranking 66th of 73</strong> participating countries. For many of this study's Korean-background participants, performing arts became the rare space where restraint could be set aside.</p>
+      <p class="exp-fact">🍐 The Korean pear (bae): round and golden, its sweetness hidden under a firm, quiet skin, gentle inside, reserved outside.</p>`
   }
 };
 
@@ -888,7 +972,7 @@ function markOffline(){
   if(!apiOK) return;
   apiOK = false;
   const note = document.getElementById('add-note');
-  if(note) note.textContent = '⚠️ Could not reach the server — fruits you add will last for this visit only.';
+  if(note) note.textContent = '⚠️ Could not reach the server, fruits you add will last for this visit only.';
 }
 
 function hashColor(id){
@@ -1030,7 +1114,7 @@ async function addUserFruit(){
         body: JSON.stringify({action:'add', food, opinion})
       });
       const data = await res.json();
-      if(!res.ok){ alert(data.error || 'Could not add your fruit — try again!'); return; }
+      if(!res.ok){ alert(data.error || 'Could not add your fruit, try again!'); return; }
       if(Array.isArray(data.fruits)) sharedFruits = data.fruits;
       rec = data.added;
     }catch(e){ markOffline(); }
@@ -1123,9 +1207,9 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 let fruits = [], started = false, paused = false;
 
 const FRUIT_DEFS = [
-  {key:'mx', svg:'#svg-avocado', r:72, tag:'avocado — Mexico', click:true},
-  {key:'us', svg:'#svg-apple',  r:56, tag:'apple — United States', click:true},
-  {key:'kr', svg:'#svg-pear',   r:50, tag:'pear — Korea', click:true},
+  {key:'mx', svg:'#svg-avocado', r:72, tag:'avocado · Mexico', click:true},
+  {key:'us', svg:'#svg-apple',  r:56, tag:'apple · United States', click:true},
+  {key:'kr', svg:'#svg-pear',   r:50, tag:'pear · Korea', click:true},
   {key:null, svg:'#svg-berry',  r:24, tag:null, click:false},
   {key:null, svg:'#svg-berry',  r:20, tag:null, click:false},
   {key:null, svg:'#svg-grape',  r:26, tag:null, click:false},
@@ -1223,6 +1307,67 @@ window.addEventListener('resize', ()=>{
     draw(f);
   });
 });
+
+/* ---------------- coding matrix explorer ---------------- */
+const THEME_COLS = [
+  {k:"Conf", n:"Confidence transfer (stage to life)"},
+  {k:"Tool", n:"Body as tool for expression"},
+  {k:"Judg", n:"Body as judged / insecurity"},
+  {k:"Press", n:"Cultural pressure / restraint"},
+  {k:"Open", n:"Culture: open expression"},
+  {k:"Grp", n:"Group as safety"},
+  {k:"Solo", n:"Solo as vulnerability"},
+  {k:"Ctr", n:"Counter-evidence"},
+  {k:"Comp", n:"Comparison to peers"},
+  {k:"Med", n:"Social media body pressure"},
+  {k:"NoRg", n:"No regrets"}
+];
+const CODING_MATRIX = [
+  {id:"A", group:"Performer", art:"Theater + harp (orchestra)", bg:"Indian American", x:[1,1,0,0,0,0,0,0,1,0,1], quote:"Once I was on stage I was so absorbed in my own performance that I let go of a lot of anxiety."},
+  {id:"B", group:"Performer", art:"Choir + a cappella", bg:"Korean American", x:[1,1,0,1,0,1,0,0,1,0,1], quote:"Now my body is my instrument, my tool for making music."},
+  {id:"C", group:"Performer", art:"Violin (solo + orchestra)", bg:"Korean", x:[0,0,1,1,0,0,1,0,1,0,1], quote:"I feel judged definitely... I have the fear that people judge me and they probably do."},
+  {id:"D", group:"Performer", art:"Theater / musical (+ choir)", bg:"Chinese", x:[0,0,1,1,0,1,1,1,1,0,0], quote:"Performing arts is the worst way to improve your self-confidence... performing is vulnerable."},
+  {id:"E", group:"Performer", art:"Theater (boarding school)", bg:"Guatemalan American", x:[1,1,1,0,1,0,0,0,1,0,1], quote:"It allows you to be on stage as someone else... which can be alleviation from judgement on yourself."},
+  {id:"F", group:"Control", art:"None", bg:"Korean American", x:[0,0,0,1,0,0,0,0,0,1,0], quote:"There was a strong emphasis on being humble and not drawing too much attention to yourself."},
+  {id:"G", group:"Control", art:"None", bg:"Chinese American", x:[0,0,0,1,0,0,0,0,0,1,0], quote:"In my family, emotions weren't discussed very openly, so I tend to keep things to myself."},
+  {id:"H", group:"Control", art:"None", bg:"Chinese American", x:[0,0,0,1,0,0,0,0,0,0,0], quote:"Academic success was emphasized much more than artistic expression."},
+  {id:"I", group:"Performer", art:"Solo and group singing + instrumental", bg:"Russian American", x:[1,0,1,1,1,0,1,0,0,0,1], quote:null},
+  {id:"J", group:"Performer", art:"Choir + theater", bg:"Indian American", x:[1,1,0,1,0,0,0,1,1,0,0], quote:null},
+  {id:"K", group:"Performer", art:"Dance", bg:"Chinese", x:[1,0,0,1,0,1,1,0,1,0,0], quote:null},
+  {id:"L", group:"Performer", art:"Trombone (orchestra)", bg:"Chinese American", x:[1,1,0,1,0,1,1,0,1,0,0], quote:"Group performance lets you borrow courage until you grow your own."},
+  {id:"M", group:"Performer", art:"Dance + theater + choir + solo + piano", bg:"Korean American", x:[1,1,1,1,0,0,1,0,1,0,1], quote:null},
+  {id:"N", group:"Performer", art:"Dance + theater + choir + solo + clarinet", bg:"American", x:[1,1,1,0,1,1,0,0,1,0,1], quote:null},
+  {id:"O", group:"Performer", art:"Dance + gymnastics", bg:"Chinese American", x:[0,0,1,1,0,0,0,0,1,0,1], quote:null}
+];
+(function buildMatrix(){
+  const table = document.getElementById("cmatrix");
+  if(!table) return;
+  let html = "<thead><tr><th style=\"text-align:left\">Student</th>";
+  for(const t of THEME_COLS) html += `<th title="${t.n}">${t.k}</th>`;
+  html += "</tr></thead><tbody>";
+  for(const s of CODING_MATRIX){
+    html += `<tr data-id="${s.id}" class="${s.group==="Control"?"ctrl":""}"><td class="stu">${s.id}${s.group==="Control"?" (ctrl)":""}</td>`;
+    for(const v of s.x) html += `<td>${v?"<span class=\"dotx\"></span>":""}</td>`;
+    html += "</tr>";
+  }
+  html += "</tbody>";
+  table.innerHTML = html;
+  document.getElementById("matrix-legend").textContent =
+    THEME_COLS.map(t=>t.k+" = "+t.n).join("  ·  ") + "  ·  Totals: " +
+    THEME_COLS.map((t,i)=>t.k+" "+CODING_MATRIX.reduce((a,s)=>a+s.x[i],0)).join(", ");
+  table.addEventListener("click", e=>{
+    const tr = e.target.closest("tr[data-id]");
+    if(!tr) return;
+    table.querySelectorAll("tr.sel").forEach(r=>r.classList.remove("sel"));
+    tr.classList.add("sel");
+    const s = CODING_MATRIX.find(x=>x.id===tr.dataset.id);
+    const themes = THEME_COLS.filter((t,i)=>s.x[i]).map(t=>t.n).join(" · ") || "no themes coded";
+    const d = document.getElementById("matrix-detail");
+    d.innerHTML = `<strong>Student ${s.id}</strong> · ${s.group} · ${s.art} · ${s.bg}<br><span style="color:var(--ink-soft)">Themes: ${themes}</span>` +
+      (s.quote ? `<p class="md-quote">"${s.quote}"</p>` : "");
+    d.classList.add("show");
+  });
+})();
 </script>
 </body>
 </html>
